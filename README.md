@@ -1,0 +1,2 @@
+# gamolsky.net
+Personal Site! 
