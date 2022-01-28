@@ -1,15 +1,16 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
+import Toolbar from "../components/Toolbar";
 
 const IndexPage = () => {
   return (
-    <div>
+    <div className="dark:bg-slate-900 dark:text-white h-screen">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>gamolsky.net</title>
+        <title>NG - Home</title>
         <link rel="canonical" href="http://gamolsky.net" />
       </Helmet>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <Toolbar />
     </div>
   );
 };
