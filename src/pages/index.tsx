@@ -38,12 +38,8 @@ const IndexPage = ({ data }) => {
           about me
         </h1>
         <div className="flex-row flex font-hind">
-          <Img
-            fixed={data.file.childImageSharp.fixed}
-            className="border-4 shadow-lg shadow-white dark:shadow-black"
-          />
-          <div className="ml-8 max-w-lg">
-            <h3 className="text-xl">👋 Hi! I'm Nikita</h3>
+          <div className="max-w-lg text-xl">
+            <p className="">👋 Hi! I'm Nikita</p>
             <p className="mt-4">
               A creative problem solver and experienced software engineer
               dedicated to aligning my work with the mission of **** (something
@@ -52,7 +48,7 @@ const IndexPage = ({ data }) => {
             <h1 className="uppercase my-8 text-2xl text-blue-300 font-upper">
               what i care about
             </h1>
-            <ul className="list-disc list-inside font-hind">
+            <ul className="list-disc list-inside font-hind  my-8">
               <li>Fighting Climate Change</li>
               <li>Improving the Quality of Education</li>
             </ul>
@@ -63,6 +59,11 @@ const IndexPage = ({ data }) => {
               I've been working on.
             </p>
           </div>
+
+          <Img
+            fixed={data.file.childImageSharp.fixed}
+            className="border-4 shadow-lg shadow-white dark:shadow-black mx-auto "
+          />
         </div>
       </div>
     </Container>
