@@ -8,7 +8,7 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "profilePic.jpeg" }) {
       childImageSharp {
-        fixed(width: 350, height: 350) {
+        fixed(width: 400, height: 400) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -24,17 +24,13 @@ const IndexPage = ({ data }) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Lato:wght@100&family=Poiret+One&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Lato:wght@100&family=Poiret+One&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Lato:wght@300&family=Poiret+One&display=swap"
           rel="stylesheet"
         />
       </Helmet>
 
       <div className="mx-auto space-y-4 max-w-6xl">
-        <h1 className="uppercase mt-8 text-2xl text-blue-300 font-upper">
+        <h1 className="uppercase mt-8 text-2xl dark:text-blue-300 text-blue-800 font-upper">
           about me
         </h1>
         <div className="flex-row flex font-hind">
@@ -45,10 +41,10 @@ const IndexPage = ({ data }) => {
               dedicated to aligning my work with the mission of **** (something
               about bettering communities)
             </p>
-            <h1 className="uppercase my-8 text-2xl text-blue-300 font-upper">
+            <h1 className="uppercase my-8 text-2xl dark:text-blue-300 text-blue-800 font-upper">
               what i care about
             </h1>
-            <ul className="list-disc list-inside font-hind  my-8">
+            <ul className="list-disc list-inside font-hind my-8">
               <li>Fighting Climate Change</li>
               <li>Improving the Quality of Education</li>
             </ul>
