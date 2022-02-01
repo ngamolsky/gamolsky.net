@@ -8,7 +8,7 @@ type ToolbarProps = {
 const Toolbar = ({ pageNames, currentPage }: ToolbarProps) => {
   return (
     <header className="p-4 shadow-sm shadow-blue-300 text-2xl">
-      <div className="font-lower flex space-x-4 mx-20">
+      <div className="font-lower flex space-x-4 mx-auto max-w-6xl">
         <div className="grow">
           <Link to="/" className="hover:text-blue-300 hover:underline">
             gamolsky.net

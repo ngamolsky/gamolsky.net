@@ -5,6 +5,7 @@ module.exports = {
       fontFamily: {
         lower: ["Poiret One", "cursive"],
         upper: ["Lato", "sans-serif"],
+        hind: ["Hind", "sans-serif"],
       },
     },
   },

@@ -7,7 +7,7 @@ const ProjectPage = () => {
     <div className="dark:bg-slate-900 dark:text-white h-screen">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>NG - Home</title>
+        <title>Projects</title>
         <link rel="canonical" href="http://gamolsky.net" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
