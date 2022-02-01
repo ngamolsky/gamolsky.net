@@ -8,8 +8,8 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "profilePic.jpeg" }) {
       childImageSharp {
-        fixed(width: 400, height: 400) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 400) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -28,16 +28,16 @@ const IndexPage = ({ data }) => {
           rel="stylesheet"
         />
       </Helmet>
-      <div className="mx-auto space-y-4 max-w-6xl mt-16">
-        <div className="max-w-lg text-xl font-hind m-4">
-          <h1 className="hidden sm:visible uppercase text-2xl dark:text-blue-300 text-blue-800 font-upper">
+      <div className="mx-auto space-y-4 max-w-6xl">
+        <div className="max-w-lg text-xl font-hind p-4">
+          <h1 className="uppercase text-2xl dark:text-blue-300 text-blue-800 font-upper ">
             about me
           </h1>
 
-          <p className="mt-4">👋 Hi! I'm Nikita.</p>
+          <p className="my-4">👋 Hi! I'm Nikita.</p>
           <Img
-            fixed={data.file.childImageSharp.fixed}
-            className="border-4 shadow-lg shadow-white dark:shadow-black mx-auto "
+            fluid={data.file.childImageSharp.fluid}
+            className="border-4 shadow-lg shadow-white dark:shadow-black mx-auto"
           />
           <p className="mt-4">
             A creative problem solver and experienced software engineer

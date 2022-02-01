@@ -24,7 +24,7 @@ const Toolbar = ({ pageNames, currentPage }: ToolbarProps) => {
               currentPage == pageName
                 ? "text-blue-800 dark:text-blue-300 underline"
                 : "dark:hover:text-blue-300 hover:text-blue-800 hover:underline"
-            } uppercase font-upper`}
+            } uppercase font-upper hidden sm:visible`}
           >
             {pageName}
           </Link>
