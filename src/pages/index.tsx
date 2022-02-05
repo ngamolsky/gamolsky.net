@@ -28,36 +28,37 @@ const IndexPage = ({ data }) => {
           rel="stylesheet"
         />
       </Helmet>
-      <div className="mx-auto space-y-4 max-w-6xl">
-        <div className="max-w-lg text-xl font-hind p-4">
-          <h1 className="uppercase text-2xl dark:text-blue-300 text-blue-800 font-upper ">
-            about me
-          </h1>
+      <div className="mx-auto space-y-4 max-w-6xl p-4 font-hind ">
+        <h1 className="uppercase text-2xl dark:text-lightblue text-blue-800 font-upper ">
+          about me
+        </h1>
 
-          <p className="my-4">👋 Hi! I'm Nikita.</p>
-          <Img
-            fluid={data.file.childImageSharp.fluid}
-            className="border-4 shadow-lg shadow-white dark:shadow-black mx-auto"
-          />
-          <p className="mt-4">
-            A creative problem solver and experienced software engineer
-            dedicated to aligning my work with the mission of **** (something
-            about bettering communities)
-          </p>
-          <h1 className="uppercase mt-8 text-2xl dark:text-blue-300 text-blue-800 font-upper">
-            what i care about
-          </h1>
-          <ul className="list-disc list-inside font-hind my-4">
-            <li>Fighting Climate Change</li>
-            <li>Improving the Quality of Education</li>
-          </ul>
-          <p className="font-hind">
-            I'm also passionate about puzzles and word games, and to that end
-            have been working on a collaborative crossword puzzle game. Head
-            over to the Projects page to check that out and other projects I've
-            been working on.
-          </p>
-        </div>
+        <p className="my-4">👋 Hi! I'm Nikita.</p>
+        <Img
+          fluid={data.file.childImageSharp.fluid}
+          className="border-4 shadow-lg shadow-white dark:shadow-black mx-auto"
+        />
+        <p className="mt-4">
+          A creative problem solver and experienced software engineer dedicated
+          to aligning my work with the mission of **** (something about
+          bettering communities)
+        </p>
+        <h1 className="uppercase mt-8 text-2xl dark:text-darkerblue text-blue-800 font-upper">
+          what i care about
+        </h1>
+        <ul className="list-disc list-inside my-4">
+          <li>Fighting Climate Change</li>
+          <li>Improving the Quality of Education</li>
+        </ul>
+        <p className="font-hind">
+          I'm also passionate about puzzles and word games, and to that end have
+          been working on a collaborative crossword puzzle game. Head over to
+          the{" "}
+          <Link to="/projects" className="dark:text-yellow hover:underline">
+            Projects
+          </Link>{" "}
+          page to check that out and other projects I've been working on.
+        </p>
       </div>
     </Container>
   );
