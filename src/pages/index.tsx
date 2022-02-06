@@ -43,7 +43,7 @@ const IndexPage = ({ data }) => {
           to aligning my work with the mission of **** (something about
           bettering communities)
         </p>
-        <h1 className="uppercase mt-8 text-2xl dark:text-darkerblue text-blue-800 font-upper">
+        <h1 className="uppercase mt-8 text-2xl dark:text-lightblue text-blue-800 font-upper">
           what i care about
         </h1>
         <ul className="list-disc list-inside my-4">
