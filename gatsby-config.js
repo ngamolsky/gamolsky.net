@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `gamolsky.net`,
+    titleTemplate: "%s | Nikita Gamolsky",
     siteUrl: `https://www.gamolsky.net`,
     description: "test description, Nikita Gamolsky",
   },
