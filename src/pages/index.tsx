@@ -20,7 +20,7 @@ const IndexPage = ({ data }) => {
     <Container pageNames={["about", "projects", "contact"]} currentPage="about">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>About</title>
+        <title>About | Nikita Gamolsky</title>
       </Helmet>
       <div className="max-w-6xl p-4 mx-auto space-y-4 font-hind ">
         <div className="grid grid-cols-1 gap-4 mt-4 md:grid-cols-2">
