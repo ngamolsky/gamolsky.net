@@ -2,6 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `gamolsky.net`,
     siteUrl: `https://www.gamolsky.net`,
+    description: "test description, Nikita Gamolsky",
   },
   plugins: [
     "gatsby-plugin-postcss",

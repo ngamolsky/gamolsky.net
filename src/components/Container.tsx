@@ -9,7 +9,7 @@ type ContainerProps = {
 
 const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
   return (
-    <div className="dark:bg-slate-900 dark:text-white min-h-screen w-full">
+    <div className="w-full min-h-full dark:bg-slate-900 dark:text-white">
       <Toolbar currentPage={currentPage} pageNames={pageNames} />
       {children}
     </div>
