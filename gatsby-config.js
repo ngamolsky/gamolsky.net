@@ -3,7 +3,7 @@ module.exports = {
     title: `gamolsky.net`,
     titleTemplate: "%s | Nikita Gamolsky",
     siteUrl: `https://www.gamolsky.net`,
-    description: "test description, Nikita Gamolsky",
+    description: "Nikita Gamolsky's personal site.",
   },
   plugins: [
     "gatsby-plugin-postcss",

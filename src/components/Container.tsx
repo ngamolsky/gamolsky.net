@@ -11,7 +11,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
   return (
     <div className="w-full min-h-full dark:bg-slate-900 dark:text-white">
       <Toolbar currentPage={currentPage} pageNames={pageNames} />
-      {children}
+      <div className="max-w-5xl mx-auto">{children}</div>
     </div>
   );
 };
