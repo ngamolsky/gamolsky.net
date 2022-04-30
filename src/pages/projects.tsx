@@ -2,8 +2,8 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image";
 import * as React from "react";
 import { Helmet } from "react-helmet";
-import Container from "../../components/Container";
-import Project from "../../components/Project";
+import Container from "../components/Container";
+import Project from "../components/Project";
 
 export const query = graphql`
   {
@@ -70,9 +70,7 @@ const ProjectPage = ({ data }: DataProps) => {
               link={project.shortId}
               key={project.shortId}
               title={project.title}
-              imageContent={
-                image && <GatsbyImage image={image} alt={project.title} />
-              }
+              image={image}
               notionLink={project.notionLink}
               githubLink={project.githubLink}
               descriptionContent={

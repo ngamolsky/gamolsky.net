@@ -1,4 +1,5 @@
 import { Link, navigate } from "gatsby";
+import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ReactNode } from "react";
 
@@ -7,7 +8,7 @@ const Project = ({
   link,
   description,
   descriptionContent,
-  imageContent,
+  image,
   notionLink,
   githubLink,
 }: {
@@ -15,7 +16,7 @@ const Project = ({
   link?: string;
   description?: string;
   descriptionContent?: ReactNode;
-  imageContent?: ReactNode;
+  image?: IGatsbyImageData;
   notionLink?: string;
   githubLink?: string;
 }) => {
@@ -27,7 +28,13 @@ const Project = ({
       }}
     >
       <div className="flex ">
-        {imageContent}
+        {image && (
+          <GatsbyImage
+            image={image}
+            alt={title}
+            className="aspect-square shrink-0"
+          />
+        )}
         <div className="flex flex-col justify-center ml-4 space-y-2 grow">
           <div className="text-xl">{title}</div>
           {description && (
