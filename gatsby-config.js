@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `gamolsky.net`,
@@ -19,7 +23,8 @@ module.exports = {
       },
     },
     "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
+    "gatsby-plugin-typescript",
+    "gatsby-transformer-remark",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -27,6 +32,13 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
+      },
     },
   ],
 };

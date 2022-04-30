@@ -1,21 +1,10 @@
-import { graphql, Link } from "gatsby";
+import { Link } from "gatsby";
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import Container from "../components/Container";
 import { StaticImage } from "gatsby-plugin-image";
 
-export const query = graphql`
-  query {
-    file(relativePath: { eq: "profilePic.jpeg" }) {
-      childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-`;
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   return (
     <Container pageNames={["about", "projects", "contact"]} currentPage="about">
       <Helmet>
