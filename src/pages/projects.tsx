@@ -7,20 +7,33 @@ import Project from "../components/Project";
 
 export const query = graphql`
   {
-    allContentfulProject {
+    allNotion(
+      sort: {
+        fields: childrenMarkdownRemark___frontmatter___lastEdited
+        order: DESC
+      }
+    ) {
       nodes {
-        title
-        githubLink
-        notionLink
-        shortId
-        updatedAt
-        thumbnail {
-          gatsbyImageData(width: 200)
-        }
-        description {
-          childMarkdownRemark {
-            html
+        childMarkdownRemark {
+          frontmatter {
+            githubLink
+            lastEdited
+            readableId
+            tags {
+              name
+            }
+            title
+            description
           }
+          timeToRead
+        }
+        thumbnailImg {
+          childImageSharp {
+            gatsbyImageData(width: 150, placeholder: BLURRED)
+          }
+        }
+        raw {
+          url
         }
       }
     }
@@ -29,19 +42,22 @@ export const query = graphql`
 
 type DataProps = {
   data: {
-    allContentfulProject: {
+    allNotion: {
       nodes: {
-        githubLink?: string;
-        notionLink?: string;
-        title: string;
-        shortId: string;
-        updatedAt: string;
-        thumbnail: {
-          gatsbyImageData: ImageDataLike;
+        raw: {
+          url: string;
         };
-        description: {
-          childMarkdownRemark: {
-            html: string;
+        thumbnailImg: any;
+        childMarkdownRemark: {
+          frontmatter: {
+            githubLink: string;
+            lastEdited: string;
+            tags: {
+              name: string;
+            }[];
+            readableId: string;
+            title: string;
+            description: string;
           };
         };
       }[];
@@ -50,7 +66,7 @@ type DataProps = {
 };
 
 const ProjectPage = ({ data }: DataProps) => {
-  const projects = data.allContentfulProject.nodes;
+  const projects = data.allNotion.nodes;
 
   return (
     <Container
@@ -62,25 +78,22 @@ const ProjectPage = ({ data }: DataProps) => {
         <title>Projects | Nikita Gamolsky</title>
       </Helmet>
 
-      <div className="flex flex-col p-4 space-y-4">
+      <div className="flex flex-col p-4 mt-4 space-y-4">
         {projects.map((project) => {
-          const image = getImage(project.thumbnail.gatsbyImageData);
+          const image = project.thumbnailImg
+            ? getImage(project.thumbnailImg)
+            : undefined;
+          const frontmatter = project.childMarkdownRemark.frontmatter;
+          console.log(frontmatter.lastEdited);
+
           return (
             <Project
-              link={project.shortId}
-              key={project.shortId}
-              title={project.title}
+              key={frontmatter.readableId}
+              title={frontmatter.title}
               image={image}
-              notionLink={project.notionLink}
-              githubLink={project.githubLink}
-              descriptionContent={
-                <div
-                  className="dark:text-slate-400"
-                  dangerouslySetInnerHTML={{
-                    __html: project.description.childMarkdownRemark.html,
-                  }}
-                />
-              }
+              notionLink={project.raw?.url}
+              githubLink={frontmatter.githubLink}
+              description={frontmatter.description}
             />
           );
         })}

@@ -24,7 +24,7 @@ const Project = ({
     <div
       className="p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black "
       onClick={() => {
-        navigate(`/projects/${link}/`);
+        if (link) navigate(`/projects/${link}/`);
       }}
     >
       <div className="flex ">

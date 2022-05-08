@@ -25,6 +25,7 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-typescript",
     "gatsby-transformer-remark",
+    "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -33,11 +34,14 @@ module.exports = {
       },
       __key: "images",
     },
+
     {
-      resolve: `gatsby-source-contentful`,
+      resolve: `gatsby-source-notion-api`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_DELIVERY_ACCESS_TOKEN,
+        token: process.env.GATSBY_NOTION_TOKEN,
+        databaseId: process.env.PROJECTS_DB_ID,
+        propsToFrontmatter: true,
+        lowerTitleLevel: true,
       },
     },
   ],

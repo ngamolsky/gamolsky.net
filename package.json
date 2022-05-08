@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "add": "^2.0.6",
     "autoprefixer": "^10.4.2",
     "dotenv": "^16.0.0",
     "gatsby": "^4.6.0",
@@ -26,15 +27,16 @@
     "gatsby-plugin-sharp": "^4.13.0",
     "gatsby-plugin-sitemap": "^5.6.0",
     "gatsby-plugin-typescript": "^4.13.0",
-    "gatsby-source-contentful": "^7.11.0",
     "gatsby-source-filesystem": "^4.13.0",
+    "gatsby-source-notion-api": "^0.11.0",
     "gatsby-transformer-remark": "^5.13.0",
     "gatsby-transformer-sharp": "^4.13.0",
     "postcss": "^8.4.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "tailwindcss": "^3.0.17"
+    "tailwindcss": "^3.0.17",
+    "yarn": "^1.22.18"
   },
   "devDependencies": {
     "@types/node": "^17.0.30",
