@@ -24,6 +24,7 @@ export const query = graphql`
             }
             title
             description
+            actionLink
           }
           timeToRead
         }
@@ -50,14 +51,15 @@ type DataProps = {
         thumbnailImg: any;
         childMarkdownRemark: {
           frontmatter: {
-            githubLink: string;
+            githubLink?: string;
             lastEdited: string;
             tags: {
               name: string;
             }[];
             readableId: string;
             title: string;
-            description: string;
+            description?: string;
+            actionLink?: string;
           };
         };
       }[];
@@ -94,6 +96,7 @@ const ProjectPage = ({ data }: DataProps) => {
               githubLink={frontmatter.githubLink}
               description={frontmatter.description}
               lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
+              link={frontmatter.actionLink}
             />
           );
         })}
