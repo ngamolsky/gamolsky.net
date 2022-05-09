@@ -1,4 +1,4 @@
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ReactNode } from "react";
@@ -26,7 +26,7 @@ const Project = ({
     <div
       className="p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black "
       onClick={() => {
-        if (link) navigate(`/projects/${link}/`);
+        if (link) navigate(link);
       }}
     >
       <div className="flex flex-wrap space-y-4 md:flex-nowrap">

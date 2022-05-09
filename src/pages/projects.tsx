@@ -1,5 +1,5 @@
 import { graphql } from "gatsby";
-import { GatsbyImage, getImage, ImageDataLike } from "gatsby-plugin-image";
+import { getImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import Container from "../components/Container";
