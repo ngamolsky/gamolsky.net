@@ -24,7 +24,9 @@ const Project = ({
 }) => {
   return (
     <div
-      className="p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black "
+      className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black ${
+        link ? "cursor-pointer" : ""
+      }`}
       onClick={() => {
         if (link) navigate(link);
       }}
