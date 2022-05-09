@@ -29,20 +29,18 @@ const Project = ({
         if (link) navigate(`/projects/${link}/`);
       }}
     >
-      <div className="flex ">
+      <div className="flex flex-wrap space-y-4">
         {image && (
           <GatsbyImage
             image={image}
             alt={title}
-            className="aspect-square shrink-0"
+            className="mx-auto aspect-square shrink-0 "
           />
         )}
         <div className="flex flex-col justify-center ml-4 space-y-2 grow">
           <div className="text-xl">{title}</div>
           {description && (
-            <div className="hidden dark:text-slate-400 md:flex">
-              {description}
-            </div>
+            <div className="max-w-xl dark:text-slate-400">{description}</div>
           )}
           {descriptionContent}
 
@@ -50,7 +48,7 @@ const Project = ({
             {lastEditedOn && (
               <div className="flex text-sm dark:text-slate-500 grow ">
                 <div className="self-end ">
-                  Last Edited On: {lastEditedOn.toLocaleDateString()}
+                  Last Updated on: {lastEditedOn.toLocaleDateString()}
                 </div>
               </div>
             )}
