@@ -11,6 +11,7 @@ const Project = ({
   image,
   notionLink,
   githubLink,
+  lastEditedOn,
 }: {
   title: string;
   link?: string;
@@ -19,6 +20,7 @@ const Project = ({
   image?: IGatsbyImageData;
   notionLink?: string;
   githubLink?: string;
+  lastEditedOn?: Date;
 }) => {
   return (
     <div
@@ -41,6 +43,11 @@ const Project = ({
             <div className="dark:text-slate-400">{description}</div>
           )}
           {descriptionContent}
+          {lastEditedOn && (
+            <div className="dark:text-slate-400">
+              Last Edited On: {lastEditedOn.toLocaleDateString()}
+            </div>
+          )}
           <div className="flex space-x-4 grow">
             {notionLink && (
               <a

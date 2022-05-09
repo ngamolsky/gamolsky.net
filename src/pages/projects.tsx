@@ -84,7 +84,6 @@ const ProjectPage = ({ data }: DataProps) => {
             ? getImage(project.thumbnailImg)
             : undefined;
           const frontmatter = project.childMarkdownRemark.frontmatter;
-          console.log(frontmatter.lastEdited);
 
           return (
             <Project
@@ -94,6 +93,7 @@ const ProjectPage = ({ data }: DataProps) => {
               notionLink={project.raw?.url}
               githubLink={frontmatter.githubLink}
               description={frontmatter.description}
+              lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
             />
           );
         })}
