@@ -1,9 +1,9 @@
 import { graphql } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import * as React from "react";
-import { Helmet } from "react-helmet";
 import Container from "../components/Container";
 import Project from "../components/Project";
+import SEO from "../components/SEO";
 
 export const query = graphql`
   {
@@ -71,37 +71,34 @@ const ProjectPage = ({ data }: DataProps) => {
   const projects = data.allNotion.nodes;
 
   return (
-    <Container
-      pageNames={["about", "projects", "contact"]}
-      currentPage="projects"
-    >
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Projects | Nikita Gamolsky</title>
-      </Helmet>
+    <SEO title="Projects">
+      <Container
+        pageNames={["about", "projects", "contact"]}
+        currentPage="projects"
+      >
+        <div className="flex flex-col p-4 mt-4 space-y-4">
+          {projects.map((project) => {
+            const image = project.thumbnailImg
+              ? getImage(project.thumbnailImg)
+              : undefined;
+            const frontmatter = project.childMarkdownRemark.frontmatter;
 
-      <div className="flex flex-col p-4 mt-4 space-y-4">
-        {projects.map((project) => {
-          const image = project.thumbnailImg
-            ? getImage(project.thumbnailImg)
-            : undefined;
-          const frontmatter = project.childMarkdownRemark.frontmatter;
-
-          return (
-            <Project
-              key={frontmatter.readableId}
-              title={frontmatter.title}
-              image={image}
-              notionLink={project.raw?.url}
-              githubLink={frontmatter.githubLink}
-              description={frontmatter.description}
-              lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
-              link={frontmatter.actionLink}
-            />
-          );
-        })}
-      </div>
-    </Container>
+            return (
+              <Project
+                key={frontmatter.readableId}
+                title={frontmatter.title}
+                image={image}
+                notionLink={project.raw?.url}
+                githubLink={frontmatter.githubLink}
+                description={frontmatter.description}
+                lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
+                link={frontmatter.actionLink}
+              />
+            );
+          })}
+        </div>
+      </Container>
+    </SEO>
   );
 };
 
