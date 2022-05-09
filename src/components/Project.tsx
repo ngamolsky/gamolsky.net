@@ -40,33 +40,40 @@ const Project = ({
         <div className="flex flex-col justify-center ml-4 space-y-2 grow">
           <div className="text-xl">{title}</div>
           {description && (
-            <div className="dark:text-slate-400">{description}</div>
-          )}
-          {descriptionContent}
-          {lastEditedOn && (
-            <div className="dark:text-slate-400">
-              Last Edited On: {lastEditedOn.toLocaleDateString()}
+            <div className="hidden dark:text-slate-400 md:flex">
+              {description}
             </div>
           )}
-          <div className="flex space-x-4 grow">
-            {notionLink && (
-              <a
-                className="self-end dark:text-yellow hover:underline"
-                href={notionLink}
-                target="_blank"
-              >
-                Notion
-              </a>
+          {descriptionContent}
+
+          <div className="flex flex-col grow">
+            {lastEditedOn && (
+              <div className="flex text-sm dark:text-slate-500 grow ">
+                <div className="self-end ">
+                  Last Edited On: {lastEditedOn.toLocaleDateString()}
+                </div>
+              </div>
             )}
-            {githubLink && (
-              <a
-                className="self-end dark:text-yellow hover:underline "
-                href={githubLink}
-                target="_blank"
-              >
-                Github
-              </a>
-            )}
+            <div className="flex space-x-4">
+              {notionLink && (
+                <a
+                  className="self-end dark:text-yellow hover:underline"
+                  href={notionLink}
+                  target="_blank"
+                >
+                  Notion
+                </a>
+              )}
+              {githubLink && (
+                <a
+                  className="self-end dark:text-yellow hover:underline "
+                  href={githubLink}
+                  target="_blank"
+                >
+                  Github
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
