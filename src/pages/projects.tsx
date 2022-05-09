@@ -71,34 +71,34 @@ const ProjectPage = ({ data }: DataProps) => {
   const projects = data.allNotion.nodes;
 
   return (
-    <SEO title="Projects">
-      <Container
-        pageNames={["about", "projects", "contact"]}
-        currentPage="projects"
-      >
-        <div className="flex flex-col p-4 mt-4 space-y-4">
-          {projects.map((project) => {
-            const image = project.thumbnailImg
-              ? getImage(project.thumbnailImg)
-              : undefined;
-            const frontmatter = project.childMarkdownRemark.frontmatter;
+    <Container
+      pageNames={["about", "projects", "contact"]}
+      currentPage="projects"
+    >
+      <SEO title="About" />
 
-            return (
-              <Project
-                key={frontmatter.readableId}
-                title={frontmatter.title}
-                image={image}
-                notionLink={project.raw?.url}
-                githubLink={frontmatter.githubLink}
-                description={frontmatter.description}
-                lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
-                link={frontmatter.actionLink}
-              />
-            );
-          })}
-        </div>
-      </Container>
-    </SEO>
+      <div className="flex flex-col p-4 mt-4 space-y-4">
+        {projects.map((project) => {
+          const image = project.thumbnailImg
+            ? getImage(project.thumbnailImg)
+            : undefined;
+          const frontmatter = project.childMarkdownRemark.frontmatter;
+
+          return (
+            <Project
+              key={frontmatter.readableId}
+              title={frontmatter.title}
+              image={image}
+              notionLink={project.raw?.url}
+              githubLink={frontmatter.githubLink}
+              description={frontmatter.description}
+              lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
+              link={frontmatter.actionLink}
+            />
+          );
+        })}
+      </div>
+    </Container>
   );
 };
 
