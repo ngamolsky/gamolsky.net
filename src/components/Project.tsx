@@ -29,18 +29,18 @@ const Project = ({
         if (link) navigate(`/projects/${link}/`);
       }}
     >
-      <div className="flex flex-wrap space-y-4">
+      <div className="flex flex-wrap space-y-4 md:flex-nowrap">
         {image && (
           <GatsbyImage
             image={image}
             alt={title}
-            className="mx-auto aspect-square shrink-0 "
+            className="w-full max-w-md mx-auto md:w-48 aspect-square shrink-0"
           />
         )}
         <div className="flex flex-col justify-center ml-4 space-y-2 grow">
           <div className="text-xl">{title}</div>
           {description && (
-            <div className="max-w-xl dark:text-slate-400">{description}</div>
+            <div className=" dark:text-slate-400">{description}</div>
           )}
           {descriptionContent}
 
