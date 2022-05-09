@@ -7,6 +7,7 @@ module.exports = {
     title: `gamolsky.net`,
     titleTemplate: "%s | Nikita Gamolsky",
     siteUrl: `https://www.gamolsky.net`,
+    url: "https://www.gamolsky.net",
     description: "Nikita Gamolsky's personal site.",
   },
   plugins: [
