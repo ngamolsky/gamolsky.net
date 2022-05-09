@@ -27,9 +27,6 @@ const Project = ({
       className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black ${
         link ? "cursor-pointer" : ""
       }`}
-      onClick={() => {
-        if (link) navigate(link);
-      }}
     >
       <div className="flex flex-wrap space-y-4 md:flex-nowrap">
         {image && (
@@ -72,6 +69,15 @@ const Project = ({
                   target="_blank"
                 >
                   Github
+                </a>
+              )}
+              {link && (
+                <a
+                  className="self-end dark:text-yellow hover:underline "
+                  href={link}
+                  target="_blank"
+                >
+                  Check it Out!
                 </a>
               )}
             </div>
