@@ -75,7 +75,7 @@ const ProjectPage = ({ data }: DataProps) => {
       pageNames={["about", "projects", "contact"]}
       currentPage="projects"
     >
-      <SEO title="About" />
+      <SEO title="Projects" />
 
       <div className="flex flex-col p-4 mt-4 space-y-4">
         {projects.map((project) => {

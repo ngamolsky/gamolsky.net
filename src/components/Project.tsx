@@ -1,4 +1,3 @@
-import { navigate } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ReactNode } from "react";
@@ -24,9 +23,7 @@ const Project = ({
 }) => {
   return (
     <div
-      className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black ${
-        link ? "cursor-pointer" : ""
-      }`}
+      className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black`}
     >
       <div className="flex flex-wrap space-y-4 md:flex-nowrap">
         {image && (

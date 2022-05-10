@@ -5,7 +5,7 @@ import Toolbar from "../components/Toolbar";
 const ContactPage = () => {
   return (
     <div className="h-screen dark:bg-slate-900 dark:text-white">
-      <SEO title="About" />
+      <SEO title="Contact" />
 
       <Toolbar
         pageNames={["about", "projects", "contact"]}
