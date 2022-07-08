@@ -23,7 +23,15 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
         }}
       />
       <div className="relative max-w-5xl mx-auto">
-        {children}
+        <div
+          onClick={() => {
+            if (open) {
+              setIsOpen(false);
+            }
+          }}
+        >
+          {children}
+        </div>
         <Transition
           as={Fragment}
           show={open}
@@ -34,7 +42,13 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           leaveFrom="translate-x-0"
           leaveTo="translate-x-full"
         >
-          <div className="absolute top-0 right-0 z-30 w-2/3 space-y-4 text-lg text-white shadow-sm dark:bg-slate-900 dark:shadow-lightblue shadow-blue-800">
+          <div
+            className="fixed right-0 z-30 w-2/3 space-y-4 text-lg text-white bg-fixed divide-y-2 shadow-sm top-20 dark:bg-slate-900 dark:shadow-lightblue shadow-blue-800 divide-slate-700"
+            onBlur={() => {
+              setIsOpen(false);
+            }}
+            onClick={() => {}}
+          >
             {pageNames.map((pageName) => (
               <Link
                 key={pageName}
