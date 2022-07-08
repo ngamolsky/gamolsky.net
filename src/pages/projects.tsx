@@ -113,6 +113,7 @@ const ProjectPage = ({ data }: DataProps) => {
               image={image}
               notionLink={notionLink}
               githubLink={frontmatter.githubLink}
+              actionLink={frontmatter.actionLink}
               description={frontmatter.description}
               lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
               link={link}

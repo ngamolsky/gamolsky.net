@@ -10,6 +10,7 @@ const Project = ({
   image,
   notionLink,
   githubLink,
+  actionLink,
   lastEditedOn,
   status,
 }: {
@@ -20,6 +21,7 @@ const Project = ({
   image?: IGatsbyImageData;
   notionLink?: string;
   githubLink?: string;
+  actionLink?: string;
   lastEditedOn?: Date;
   status?:
     | "In Progress"
@@ -100,7 +102,7 @@ const Project = ({
                   Github
                 </a>
               )}
-              {link && (
+              {actionLink && (
                 <a
                   className="self-end dark:text-yellow hover:underline "
                   href={link}
