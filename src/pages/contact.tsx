@@ -11,6 +11,11 @@ const ContactPage = () => {
         pageNames={["about", "projects", "contact"]}
         currentPage="contact"
       />
+
+      <a href="resume.pdf" download>
+        Download Resume
+      </a>
+      <a href="resume.pdf">Open Resume</a>
     </div>
   );
 };
