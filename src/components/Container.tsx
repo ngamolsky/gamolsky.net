@@ -23,7 +23,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           setIsOpen(!open);
         }}
       />
-      <div className="relative max-w-5xl mx-auto">
+      <div className="relative max-w-6xl mx-auto">
         <div
           onClick={() => {
             if (open) {

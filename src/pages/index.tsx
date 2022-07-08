@@ -58,6 +58,11 @@ const IndexPage = () => {
               </Link>{" "}
               page to reach out to me directly.
             </p>
+            <br />
+            <p className="text-xl">
+              I'm a dark mode user. Do with that what you will (but only judge
+              my website design in dark mode).
+            </p>
           </div>
         </div>
       </div>
