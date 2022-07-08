@@ -11,6 +11,7 @@ const Project = ({
   notionLink,
   githubLink,
   lastEditedOn,
+  status,
 }: {
   title: string;
   link?: string;
@@ -20,6 +21,12 @@ const Project = ({
   notionLink?: string;
   githubLink?: string;
   lastEditedOn?: Date;
+  status?:
+    | "In Progress"
+    | "Not Started"
+    | "Complete but Ongoing"
+    | "Complete"
+    | "Paused";
 }) => {
   return (
     <div
@@ -33,13 +40,33 @@ const Project = ({
             className="w-full max-w-md mx-auto md:w-48 aspect-square shrink-0"
           />
         )}
-        <div className="flex flex-col justify-center ml-4 space-y-2 grow">
-          <div className="text-xl">{title}</div>
+        <div className="flex flex-col ml-4 space-y-2 grow">
+          <div className="text-xl w-fit">{title}</div>
           {description && (
             <div className=" dark:text-slate-400">{description}</div>
           )}
           {descriptionContent}
-
+          {status && (
+            <div>
+              <p
+                className={`text-sm rounded-lg inline px-2 py-1 ${
+                  status == "Not Started"
+                    ? "bg-[#2B593F]"
+                    : status == "In Progress"
+                    ? "bg-[rgb(133,76,29)]"
+                    : status == "Paused"
+                    ? "bg-[rgb(40,69,108)]"
+                    : status == "Complete"
+                    ? "bg-[rgb(43,89,63)]"
+                    : status == "Complete but Ongoing"
+                    ? "bg-[rgb(73,47,100)]"
+                    : "bg-yellow"
+                }`}
+              >
+                {status}
+              </p>
+            </div>
+          )}
           <div className="flex flex-col grow">
             {lastEditedOn && (
               <div className="flex text-sm dark:text-slate-500 grow ">
@@ -53,7 +80,10 @@ const Project = ({
               {notionLink && (
                 <a
                   className="self-end dark:text-yellow hover:underline"
-                  href={notionLink}
+                  href={notionLink.replace(
+                    "https://www.notion.so/",
+                    "https://ngamolsky.notion.site/"
+                  )}
                   target="_blank"
                 >
                   Notion

@@ -25,6 +25,9 @@ export const query = graphql`
             title
             description
             actionLink
+            status {
+              name
+            }
           }
           timeToRead
         }
@@ -60,6 +63,14 @@ type DataProps = {
             title: string;
             description?: string;
             actionLink?: string;
+            status?: {
+              name:
+                | "In Progress"
+                | "Not Started"
+                | "Complete but Ongoing"
+                | "Complete"
+                | "Paused";
+            };
           };
         };
       }[];
@@ -94,6 +105,7 @@ const ProjectPage = ({ data }: DataProps) => {
               description={frontmatter.description}
               lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
               link={frontmatter.actionLink}
+              status={project.childMarkdownRemark.frontmatter.status?.name}
             />
           );
         })}
