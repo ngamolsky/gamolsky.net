@@ -10,13 +10,10 @@ const MobileMenuButton = ({
   open: boolean;
   toggleIsOpen: () => void;
 }) => {
-  console.log(open);
-
   return (
     <div onClick={toggleIsOpen} className={`${className} container relative`}>
       <Transition
         show={!open}
-        unmount={false}
         enter="transition ease-linear duration-300 transform"
         enterFrom="opacity-0"
         enterTo="opacity-100"

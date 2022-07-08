@@ -1,22 +1,20 @@
 import * as React from "react";
+import Container from "../components/Container";
 import SEO from "../components/SEO";
-import Toolbar from "../components/Toolbar";
 
 const ContactPage = () => {
   return (
-    <div className="h-screen dark:bg-slate-900 dark:text-white">
+    <Container
+      pageNames={["about", "projects", "contact"]}
+      currentPage="contact"
+    >
       <SEO title="Contact" />
-
-      <Toolbar
-        pageNames={["about", "projects", "contact"]}
-        currentPage="contact"
-      />
 
       <a href="resume.pdf" download>
         Download Resume
       </a>
       <a href="resume.pdf">Open Resume</a>
-    </div>
+    </Container>
   );
 };
 
