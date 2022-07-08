@@ -51,7 +51,7 @@ const Project = ({
               <p
                 className={`text-sm rounded-lg inline px-2 py-1 ${
                   status == "Not Started"
-                    ? "bg-[#2B593F]"
+                    ? "bg-[rgb(110,54,48)]"
                     : status == "In Progress"
                     ? "bg-[rgb(133,76,29)]"
                     : status == "Paused"
