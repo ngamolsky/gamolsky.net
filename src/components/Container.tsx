@@ -33,7 +33,6 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           {children}
         </div>
         <Transition
-          as={Fragment}
           show={open}
           enter="transition ease-in-out duration-300 transform"
           enterFrom="translate-x-full"
