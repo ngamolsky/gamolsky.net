@@ -32,7 +32,7 @@ const Project = ({
 }) => {
   return (
     <div
-      className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black`}
+      className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black bg-slate-300`}
       onClick={(event) => {
         if (link && !(event.target instanceof HTMLAnchorElement)) {
           window.open(link, "_blank", "noopener,noreferrer");
@@ -56,7 +56,7 @@ const Project = ({
           {status && (
             <div>
               <p
-                className={`text-sm rounded-lg inline px-2 py-1 ${
+                className={`text-sm rounded-lg inline px-2 py-1 text-white ${
                   status == "Not Started"
                     ? "bg-[rgb(110,54,48)]"
                     : status == "In Progress"
@@ -78,19 +78,18 @@ const Project = ({
             {lastEditedOn && (
               <div className="flex text-sm dark:text-slate-500 grow ">
                 <div className="self-end ">
-                  Last Updated on:{" "}
-                  {lastEditedOn.toLocaleDateString([], {
+                  Last Updated on: {lastEditedOn.toLocaleDateString()} at{" "}
+                  {lastEditedOn.toLocaleTimeString([], {
                     hour: "2-digit",
                     minute: "2-digit",
-                  })}{" "}
-                  at {lastEditedOn.toLocaleTimeString()}
+                  })}
                 </div>
               </div>
             )}
             <div className="flex space-x-4">
               {notionLink && (
                 <a
-                  className="self-end dark:text-yellow hover:underline"
+                  className="self-end dark:text-yellow text-darkerblue hover:underline"
                   href={notionLink}
                   target="_blank"
                 >
@@ -99,7 +98,7 @@ const Project = ({
               )}
               {githubLink && (
                 <a
-                  className="self-end dark:text-yellow hover:underline "
+                  className="self-end dark:text-yellow text-darkerblue hover:underline "
                   href={githubLink}
                   target="_blank"
                 >
@@ -108,7 +107,7 @@ const Project = ({
               )}
               {actionLink && (
                 <a
-                  className="self-end dark:text-yellow hover:underline "
+                  className="self-end dark:text-yellow text-darkerblue hover:underline "
                   href={link}
                   target="_blank"
                 >

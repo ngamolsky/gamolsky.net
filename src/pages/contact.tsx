@@ -9,7 +9,7 @@ const ContactPage = () => {
       currentPage="contact"
     >
       <SEO title="Contact" />
-      <div className="flex flex-col p-4 mt-4 space-y-8">
+      <div className="flex flex-col p-4 mt-4 space-y-8 text-white">
         <a
           href="mailto:nikita@gamolsky.net?subject=Hello From Your Website!"
           className="w-64 py-4 mx-auto text-2xl text-center rounded-2xl bg-pink hover:bg-opacity-80"

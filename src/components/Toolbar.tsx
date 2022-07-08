@@ -17,10 +17,13 @@ const Toolbar = ({
   open,
 }: ToolbarProps) => {
   return (
-    <header className="sticky top-0 z-10 p-4 text-2xl shadow-sm dark:shadow-lightblue shadow-blue-800 dark:bg-slate-900 ">
+    <header className="sticky top-0 z-10 p-4 text-2xl bg-white shadow-sm dark:shadow-lightblue shadow-blue-800 dark:bg-slate-900">
       <div className="flex max-w-5xl px-4 mx-auto space-x-4 font-lower">
         <div className="grow">
-          <Link to="/" className="dark:hover:text-lightblue hover:underline">
+          <Link
+            to="/"
+            className="dark:hover:text-lightblue hover:text-darkerblue hover:underline"
+          >
             gamolsky.net
           </Link>
         </div>
@@ -30,8 +33,8 @@ const Toolbar = ({
             to={pageName == "about" ? "/" : `/${pageName}`}
             className={`flex-none ${
               currentPage == pageName
-                ? "dark:text-lightblue underline"
-                : "dark:hover:text-lightblue hover:underline"
+                ? "dark:text-lightblue text-darkerblue underline"
+                : "dark:hover:text-lightblue hover:text-darkerblue hover:underline"
             } uppercase font-upper hidden sm:inline`}
           >
             {pageName}
