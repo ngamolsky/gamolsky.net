@@ -50,6 +50,14 @@ const IndexPage = () => {
               </Link>{" "}
               page to check that out and other projects I've been working on.
             </p>
+            <br />
+            <p className="text-xl">
+              You can also go to the{" "}
+              <Link to="/projects" className="dark:text-yellow hover:underline">
+                Contact
+              </Link>{" "}
+              page to reach out to me directly.
+            </p>
           </div>
         </div>
       </div>
