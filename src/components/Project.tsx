@@ -78,8 +78,12 @@ const Project = ({
             {lastEditedOn && (
               <div className="flex text-sm dark:text-slate-500 grow ">
                 <div className="self-end ">
-                  Last Updated on: {lastEditedOn.toLocaleDateString()} at{" "}
-                  {lastEditedOn.toLocaleTimeString()}
+                  Last Updated on:{" "}
+                  {lastEditedOn.toLocaleDateString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}{" "}
+                  at {lastEditedOn.toLocaleTimeString()}
                 </div>
               </div>
             )}
