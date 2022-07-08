@@ -17,7 +17,7 @@ const Toolbar = ({
   open,
 }: ToolbarProps) => {
   return (
-    <header className="sticky top-0 z-10 p-4 text-2xl bg-white shadow-sm dark:shadow-lightblue shadow-blue-800 dark:bg-slate-900">
+    <header className="z-10 p-4 text-2xl bg-white shadow-sm dark:shadow-lightblue shadow-blue-800 dark:bg-slate-900">
       <div className="flex max-w-5xl px-4 mx-auto space-x-4 font-lower">
         <div className="grow">
           <Link

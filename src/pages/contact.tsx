@@ -26,6 +26,14 @@ const ContactPage = () => {
         </a>
         <a
           download
+          href="https://github.com/ngamolsky/"
+          className="w-64 py-4 mx-auto text-2xl text-center rounded-2xl bg-lightblue hover:bg-opacity-80"
+          target={"_blank"}
+        >
+          Github
+        </a>
+        <a
+          download
           href="http://www.linkedin.com/in/ngamolsky"
           className="w-64 py-4 mx-auto text-2xl text-center rounded-2xl bg-darkerblue hover:bg-opacity-80"
           target={"_blank"}

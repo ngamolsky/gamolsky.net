@@ -14,7 +14,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
   const [open, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className="w-full min-h-full dark:bg-slate-900 dark:text-white">
+    <div className="relative flex-col w-full h-screen overflow-hidden dark:bg-slate-900 dark:text-white">
       <Toolbar
         currentPage={currentPage}
         pageNames={pageNames}
@@ -23,8 +23,9 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           setIsOpen(!open);
         }}
       />
-      <div className="relative max-w-6xl mx-auto">
+      <div className="relative flex flex-col w-full h-screen max-w-6xl overflow-hidden">
         <div
+          className="mx-auto overflow-auto grow"
           onClick={() => {
             if (open) {
               setIsOpen(false);
