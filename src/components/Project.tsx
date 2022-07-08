@@ -31,6 +31,11 @@ const Project = ({
   return (
     <div
       className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black`}
+      onClick={() => {
+        if (link) {
+          window.open(link, "_blank", "noopener,noreferrer");
+        }
+      }}
     >
       <div className="flex flex-wrap space-y-4 md:flex-nowrap">
         {image && (
@@ -80,10 +85,7 @@ const Project = ({
               {notionLink && (
                 <a
                   className="self-end dark:text-yellow hover:underline"
-                  href={notionLink.replace(
-                    "https://www.notion.so/",
-                    "https://ngamolsky.notion.site/"
-                  )}
+                  href={notionLink}
                   target="_blank"
                 >
                   Notion

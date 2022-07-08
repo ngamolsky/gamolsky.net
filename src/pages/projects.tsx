@@ -94,17 +94,28 @@ const ProjectPage = ({ data }: DataProps) => {
             ? getImage(project.thumbnailImg)
             : undefined;
           const frontmatter = project.childMarkdownRemark.frontmatter;
+          const notionLink = project.raw?.url.replace(
+            "https://www.notion.so/",
+            "https://ngamolsky.notion.site/"
+          );
+          const link = frontmatter.actionLink
+            ? frontmatter.actionLink
+            : notionLink
+            ? notionLink
+            : frontmatter.githubLink
+            ? frontmatter.githubLink
+            : undefined;
 
           return (
             <Project
               key={frontmatter.readableId}
               title={frontmatter.title}
               image={image}
-              notionLink={project.raw?.url}
+              notionLink={notionLink}
               githubLink={frontmatter.githubLink}
               description={frontmatter.description}
               lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
-              link={frontmatter.actionLink}
+              link={link}
               status={project.childMarkdownRemark.frontmatter.status?.name}
             />
           );
