@@ -33,8 +33,8 @@ const Project = ({
   return (
     <div
       className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black`}
-      onClick={() => {
-        if (link) {
+      onClick={(event) => {
+        if (link && !(event.target instanceof HTMLAnchorElement)) {
           window.open(link, "_blank", "noopener,noreferrer");
         }
       }}
