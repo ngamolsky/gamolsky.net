@@ -9,8 +9,8 @@ const IndexPage = () => {
     <Container pageNames={["about", "projects", "contact"]} currentPage="about">
       <SEO title="About" />
 
-      <div className="max-w-6xl p-4 mx-auto space-y-4 font-hind ">
-        <div className="grid grid-cols-1 gap-16 mt-4 md:grid-cols-2">
+      <div className="max-w-6xl p-4 mx-auto space-y-4">
+        <div className="grid grid-cols-1 gap-8 mt-4 md:grid-cols-2">
           <StaticImage
             alt="Profile pic"
             src={"../images/profilePic.jpeg"}
