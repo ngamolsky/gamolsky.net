@@ -19,7 +19,7 @@ const ContactPage = () => {
         </a>
         <a
           download
-          href="resume.pdf"
+          href="Nikita_Gamolsky_Resume.pdf"
           className="w-64 py-4 mx-auto text-2xl text-center rounded-2xl bg-yellow hover:bg-opacity-80"
         >
           Download Resume
