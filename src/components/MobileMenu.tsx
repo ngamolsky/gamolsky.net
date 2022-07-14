@@ -20,7 +20,7 @@ const MobileMenu = ({
       leave="transition ease-in-out duration-300 transform"
       leaveFrom="translate-x-0"
       leaveTo="translate-x-full"
-      className="absolute top-0 right-0 z-30 w-2/3 h-full space-y-4 text-lg text-white bg-fixed border-t border-l divide-y-2 dark:bg-slate-900 divide-slate-700 dark:border-lightblue border-l-darkerblue"
+      className="absolute top-0 right-0 z-30 w-2/3 h-full space-y-4 text-lg text-white bg-fixed bg-white border-t border-l divide-y-2 dark:bg-slate-900 divide-slate-700 dark:border-lightblue border-l-darkerblue"
     >
       <div>
         {pageNames.map((pageName) => (
