@@ -21,9 +21,9 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           setIsOpen(!open);
         }}
       />
-      <div className="relative w-full h-full max-w-6xl mx-auto">
+      <div className="relative w-full max-w-6xl max-h-full mx-auto overflow-auto grow">
         <div
-          className="h-full overflow-auto pb-28"
+          className="h-full overflow-auto"
           onClick={() => {
             if (open) {
               setIsOpen(false);
