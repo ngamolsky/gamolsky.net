@@ -59,6 +59,7 @@ const IndexPage = () => {
               page to reach out to me directly.
             </p>
             <br />
+            <p className="text-sm">I like dark mode.</p>
           </div>
         </div>
       </div>
