@@ -13,10 +13,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
   const [open, setIsOpen] = useState<boolean>(false);
 
   return (
-    <Menu
-      as="div"
-      className="flex flex-col h-screen overflow-hidden dark:text-white"
-    >
+    <Menu as="div" className="flex flex-col dark:text-white">
       <Toolbar
         currentPage={currentPage}
         pageNames={pageNames}
@@ -25,23 +22,18 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           setIsOpen(!open);
         }}
       />
-      <div className="relative overflow-hidden grow">
-        <div
-          className="h-full overflow-auto"
-          onClick={() => {
-            if (open) {
-              setIsOpen(false);
-            }
-          }}
-        >
-          {children}
-        </div>
-        <MobileMenu
-          open={open}
-          pageNames={pageNames}
-          currentPage={currentPage}
-        />
+      <div
+        className="pb-8 grow"
+        onClick={() => {
+          if (open) {
+            setIsOpen(false);
+          }
+        }}
+      >
+        {children}
       </div>
+
+      <MobileMenu open={open} pageNames={pageNames} currentPage={currentPage} />
     </Menu>
   );
 };

@@ -20,9 +20,9 @@ const MobileMenu = ({
       leave="transition ease-in-out duration-300 transform"
       leaveFrom="translate-x-0"
       leaveTo="translate-x-full"
-      className="absolute top-0 right-0 z-30 self-end w-2/3 h-full space-y-4 text-lg bg-white border-t border-b border-l divide-y-2 dark:text-white dark:bg-slate-900 divide-slate-700 dark:border-lightblue grow"
+      className="fixed right-0 z-30 self-end w-2/3 space-y-4 overflow-hidden text-lg bg-white border-l border-t divide-y-2 top-[64px] dark:text-white dark:bg-slate-900 divide-slate-700 dark:border-lightblue h-full"
     >
-      <Menu.Items static>
+      <Menu.Items static className="outline-none">
         {pageNames.map((pageName) => (
           <Menu.Item key={pageName}>
             <Link
