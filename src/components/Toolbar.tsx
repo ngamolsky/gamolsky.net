@@ -1,6 +1,7 @@
-import { Transition } from "@headlessui/react";
+import { Menu, Transition } from "@headlessui/react";
 import { Link } from "gatsby";
 import React from "react";
+import MobileMenu from "./MobileMenu";
 
 import MobileMenuButton from "./MobileMenuButton";
 
@@ -40,11 +41,13 @@ const Toolbar = ({
             {pageName}
           </Link>
         ))}
-        <MobileMenuButton
-          className="w-8 h-8 p-1 my-auto rounded-full ring-1 ring-current sm:hidden"
-          open={open}
-          toggleIsOpen={toggleIsOpen}
-        />
+        <Menu.Button>
+          <MobileMenuButton
+            className="w-8 h-8 p-1 my-auto rounded-full ring-1 ring-current sm:hidden"
+            open={open}
+            toggleIsOpen={toggleIsOpen}
+          />
+        </Menu.Button>
       </div>
     </header>
   );

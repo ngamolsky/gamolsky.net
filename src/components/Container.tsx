@@ -1,3 +1,4 @@
+import { Menu } from "@headlessui/react";
 import React, { useState } from "react";
 import MobileMenu from "./MobileMenu";
 import Toolbar from "./Toolbar";
@@ -12,7 +13,10 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
   const [open, setIsOpen] = useState<boolean>(false);
 
   return (
-    <div className="flex flex-col w-full h-screen overflow-hidden dark:text-white">
+    <Menu
+      as="div"
+      className="flex flex-col h-screen overflow-hidden dark:text-white"
+    >
       <Toolbar
         currentPage={currentPage}
         pageNames={pageNames}
@@ -21,7 +25,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           setIsOpen(!open);
         }}
       />
-      <div className="relative w-full max-w-6xl mx-auto overflow-auto grow">
+      <div className="relative overflow-hidden grow">
         <div
           className="h-full overflow-auto"
           onClick={() => {
@@ -38,7 +42,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
           currentPage={currentPage}
         />
       </div>
-    </div>
+    </Menu>
   );
 };
 
