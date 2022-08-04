@@ -12,6 +12,9 @@ export const query = graphql`
         fields: childrenMarkdownRemark___frontmatter___lastEdited
         order: DESC
       }
+      filter: {
+        childMarkdownRemark: { frontmatter: { displayOnSite: { eq: true } } }
+      }
     ) {
       nodes {
         childMarkdownRemark {
@@ -28,6 +31,7 @@ export const query = graphql`
             status {
               name
             }
+            displayOnSite
           }
           timeToRead
         }
