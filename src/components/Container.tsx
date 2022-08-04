@@ -13,7 +13,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
   const [open, setIsOpen] = useState<boolean>(false);
 
   return (
-    <Menu as="div" className="flex flex-col dark:text-white">
+    <Menu as="div" className="flex flex-col min-h-screen dark:text-white">
       <Toolbar
         currentPage={currentPage}
         pageNames={pageNames}
@@ -23,7 +23,7 @@ const Container = ({ children, currentPage, pageNames }: ContainerProps) => {
         }}
       />
       <div
-        className="pb-8 grow"
+        className="flex pb-8 grow"
         onClick={() => {
           if (open) {
             setIsOpen(false);
