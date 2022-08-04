@@ -88,7 +88,7 @@ const ProjectPage = ({ data }: DataProps) => {
     >
       <SEO title="Projects" />
 
-      <div className="flex flex-col p-6 space-y-4">
+      <div className="flex flex-col max-w-5xl p-6 mx-auto space-y-4">
         {projects.map((project) => {
           const image = project.thumbnailImg
             ? getImage(project.thumbnailImg)
