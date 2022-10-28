@@ -1,89 +1,83 @@
-import { graphql } from "gatsby";
+import { graphql, useStaticQuery } from "gatsby";
 import { getImage } from "gatsby-plugin-image";
 import * as React from "react";
 import Container from "../components/Container";
-import Project from "../components/Project";
+import Project, { ProjectStatus } from "../components/Project";
 import SEO from "../components/SEO";
 
-export const query = graphql`
-  {
-    allNotion(
-      sort: {
-        fields: childrenMarkdownRemark___frontmatter___lastEdited
-        order: DESC
-      }
-      filter: {
-        childMarkdownRemark: { frontmatter: { displayOnSite: { eq: true } } }
-      }
-    ) {
-      nodes {
-        childMarkdownRemark {
-          frontmatter {
-            githubLink
-            lastEdited
-            readableId
-            tags {
-              name
-            }
-            title
-            description
-            actionLink
-            status {
-              name
-            }
-            displayOnSite
-          }
-          timeToRead
-        }
-        thumbnailImg {
-          childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
-          }
-        }
-        raw {
-          url
-        }
-      }
-    }
-  }
-`;
-
-type DataProps = {
-  data: {
-    allNotion: {
-      nodes: {
-        raw: {
-          url: string;
-        };
-        thumbnailImg: any;
-        childMarkdownRemark: {
-          frontmatter: {
-            githubLink?: string;
-            lastEdited: string;
-            tags: {
-              name: string;
-            }[];
-            readableId: string;
-            title: string;
-            description?: string;
-            actionLink?: string;
-            status?: {
-              name:
-                | "In Progress"
-                | "Not Started"
-                | "Complete but Ongoing"
-                | "Complete"
-                | "Paused";
-            };
+type ProjectQueryProps = {
+  allNotion: {
+    nodes: {
+      raw: {
+        url: string;
+      };
+      thumbnailImg: any;
+      id: string;
+      childMarkdownRemark: {
+        frontmatter: {
+          githubLink?: string;
+          lastEdited: string;
+          tags: {
+            name: string;
+          }[];
+          readableId: string;
+          title: string;
+          description?: string;
+          actionLink?: string;
+          status?: {
+            name: ProjectStatus;
           };
         };
-      }[];
-    };
+      };
+    }[];
   };
 };
 
-const ProjectPage = ({ data }: DataProps) => {
-  const projects = data.allNotion.nodes;
+const ProjectPage = () => {
+  const projectsQuery = useStaticQuery<ProjectQueryProps>(graphql`
+    {
+      allNotion(
+        sort: {
+          fields: childrenMarkdownRemark___frontmatter___lastEdited
+          order: DESC
+        }
+        filter: {
+          childMarkdownRemark: { frontmatter: { displayOnSite: { eq: true } } }
+        }
+      ) {
+        nodes {
+          childMarkdownRemark {
+            frontmatter {
+              githubLink
+              lastEdited
+              readableId
+              tags {
+                name
+              }
+              title
+              description
+              actionLink
+              status {
+                name
+              }
+              displayOnSite
+            }
+            timeToRead
+          }
+          thumbnailImg {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+          raw {
+            url
+          }
+          id
+        }
+      }
+    }
+  `);
+  const projects = projectsQuery.allNotion.nodes;
 
   return (
     <Container
@@ -112,7 +106,7 @@ const ProjectPage = ({ data }: DataProps) => {
 
           return (
             <Project
-              key={frontmatter.readableId}
+              key={project.id}
               title={frontmatter.title}
               image={image}
               notionLink={notionLink}

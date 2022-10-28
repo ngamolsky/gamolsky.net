@@ -1,6 +1,15 @@
+import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ReactNode } from "react";
+
+export type ProjectStatus =
+  | "In Progress"
+  | "Not Started"
+  | "Complete But Ongoing"
+  | "Complete"
+  | "Paused"
+  | "Planning";
 
 const Project = ({
   title,
@@ -23,13 +32,17 @@ const Project = ({
   githubLink?: string;
   actionLink?: string;
   lastEditedOn?: Date;
-  status?:
-    | "In Progress"
-    | "Not Started"
-    | "Complete but Ongoing"
-    | "Complete"
-    | "Paused";
+  status?: ProjectStatus;
 }) => {
+  const buildTimeQuery = useStaticQuery(graphql`
+    query {
+      site {
+        buildTime
+      }
+    }
+  `);
+
+  const buildTime = new Date(buildTimeQuery.site.buildTime);
   return (
     <div
       className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black bg-slate-300`}
@@ -65,8 +78,10 @@ const Project = ({
                     ? "bg-[rgb(40,69,108)]"
                     : status == "Complete"
                     ? "bg-[rgb(43,89,63)]"
-                    : status == "Complete but Ongoing"
+                    : status == "Complete But Ongoing"
                     ? "bg-[rgb(73,47,100)]"
+                    : status == "Planning"
+                    ? "bg-[rgb(105,49,76)]"
                     : "bg-yellow"
                 }`}
               >
@@ -78,7 +93,11 @@ const Project = ({
             {lastEditedOn && (
               <div className="flex text-sm dark:text-slate-500 grow ">
                 <div className="self-end ">
-                  Last Updated on: {lastEditedOn.toLocaleDateString()} at{" "}
+                  Last Updated on:{" "}
+                  {title == "Personal Site"
+                    ? buildTime.toLocaleDateString()
+                    : lastEditedOn.toLocaleDateString()}{" "}
+                  at{" "}
                   {lastEditedOn.toLocaleTimeString([], {
                     hour: "2-digit",
                     minute: "2-digit",
