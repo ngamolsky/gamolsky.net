@@ -3,6 +3,7 @@ import * as React from "react";
 import Container from "../components/Container";
 import { StaticImage } from "gatsby-plugin-image";
 import SEO from "../components/SEO";
+import Slider from "react-slick";
 
 const IndexPage = () => {
   return (
@@ -12,10 +13,11 @@ const IndexPage = () => {
       <div className="max-w-6xl p-4 mx-auto space-y-4">
         <div className="grid grid-cols-1 gap-8 mt-4 md:grid-cols-2">
           <StaticImage
-            alt="Profile pic"
+            alt="Profile Pic"
             src={"../images/profilePic.jpeg"}
-            className="w-11/12 mx-auto border-4 shadow-lg shadow-white dark:shadow-black "
+            className="w-4/5 mx-auto border-4 shadow-lg shadow-white dark:shadow-black "
           />
+
           <div>
             <h1 className="text-2xl text-blue-800 uppercase dark:text-lightblue font-upper ">
               about me
@@ -25,8 +27,8 @@ const IndexPage = () => {
               <br />
               <p>
                 A creative problem solver and experienced software engineer
-                dedicated to aligning my work with the mission of lifting others
-                by focusing on the community level.
+                looking for opportunities to apply my skills in working on
+                mitigating the effects of climate change.
               </p>
               <br />
               <p>
@@ -34,6 +36,8 @@ const IndexPage = () => {
                 and breadth of knowledge. My core skill is persistence.
               </p>
             </div>
+          </div>
+          <div>
             <h1 className="mt-8 text-2xl text-blue-800 uppercase dark:text-lightblue font-upper">
               what i care about
             </h1>
@@ -59,6 +63,39 @@ const IndexPage = () => {
               page to reach out to me directly.
             </p>
           </div>
+          <Slider
+            infinite
+            autoplay
+            autoplaySpeed={5000}
+            slidesToShow={1}
+            slidesToScroll={1}
+            speed={500}
+            arrows={false}
+            className={
+              "w-4/5 mx-auto border-4 shadow-lg shadow-white dark:shadow-black "
+            }
+          >
+            <StaticImage
+              alt="Rainy Hike"
+              src={"../images/rain.jpeg"}
+              className="aspect-square"
+            />
+            <StaticImage
+              alt="Yawning"
+              src={"../images/yawning.jpeg"}
+              className="aspect-square "
+            />
+            <StaticImage
+              alt="Pose"
+              src={"../images/pose.jpeg"}
+              className="aspect-square "
+            />
+            <StaticImage
+              alt="Grandma"
+              src={"../images/grandma.jpeg"}
+              className="aspect-square"
+            />
+          </Slider>
         </div>
       </div>
     </Container>
