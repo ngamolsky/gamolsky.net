@@ -98,10 +98,15 @@ const Project = ({
                     ? buildTime.toLocaleDateString()
                     : lastEditedOn.toLocaleDateString()}{" "}
                   at{" "}
-                  {lastEditedOn.toLocaleTimeString([], {
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  })}
+                  {title == "Personal Site"
+                    ? buildTime.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })
+                    : lastEditedOn.toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                 </div>
               </div>
             )}
