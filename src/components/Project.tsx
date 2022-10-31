@@ -1,4 +1,3 @@
-import { useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage, IGatsbyImageData } from "gatsby-plugin-image";
 import React from "react";
 import { ReactNode } from "react";
@@ -34,15 +33,6 @@ const Project = ({
   lastEditedOn?: Date;
   status?: ProjectStatus;
 }) => {
-  const buildTimeQuery = useStaticQuery(graphql`
-    query {
-      site {
-        buildTime
-      }
-    }
-  `);
-
-  const buildTime = new Date(buildTimeQuery.site.buildTime);
   return (
     <div
       className={`p-4 rounded-lg shadow-md dark:bg-slate-700 shadow-white dark:shadow-black bg-slate-300`}
@@ -93,20 +83,11 @@ const Project = ({
             {lastEditedOn && (
               <div className="flex text-sm dark:text-slate-500 grow ">
                 <div className="self-end ">
-                  Last Updated on:{" "}
-                  {title == "Personal Site"
-                    ? buildTime.toLocaleDateString()
-                    : lastEditedOn.toLocaleDateString()}{" "}
-                  at{" "}
-                  {title == "Personal Site"
-                    ? buildTime.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })
-                    : lastEditedOn.toLocaleTimeString([], {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                      })}
+                  Last Updated on: {lastEditedOn.toLocaleDateString()} at{" "}
+                  {lastEditedOn.toLocaleTimeString([], {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  })}
                 </div>
               </div>
             )}

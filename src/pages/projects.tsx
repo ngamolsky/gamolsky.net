@@ -31,16 +31,18 @@ type ProjectQueryProps = {
       };
     }[];
   };
+  site: {
+    buildTime: string;
+  };
 };
 
 const ProjectPage = () => {
   const projectsQuery = useStaticQuery<ProjectQueryProps>(graphql`
     {
+      site {
+        buildTime
+      }
       allNotion(
-        sort: {
-          fields: childrenMarkdownRemark___frontmatter___lastEdited
-          order: DESC
-        }
         filter: {
           childMarkdownRemark: { frontmatter: { displayOnSite: { eq: true } } }
         }
@@ -77,8 +79,26 @@ const ProjectPage = () => {
       }
     }
   `);
+
+  const buildTime = projectsQuery.site.buildTime;
   const projects = projectsQuery.allNotion.nodes;
 
+  const sortedProjects = projects.sort((a, b) => {
+    const aTitle = a.childMarkdownRemark.frontmatter.title;
+    const bTitle = b.childMarkdownRemark.frontmatter.title;
+
+    const aDate =
+      aTitle == "Personal Site"
+        ? new Date(buildTime)
+        : new Date(a.childMarkdownRemark.frontmatter.lastEdited);
+    const bDate =
+      bTitle == "Personal Site"
+        ? new Date(buildTime)
+        : new Date(b.childMarkdownRemark.frontmatter.lastEdited);
+    return bDate.getTime() - aDate.getTime();
+  });
+
+  console.log(sortedProjects, buildTime);
   return (
     <Container
       pageNames={["about", "projects", "contact"]}
@@ -87,7 +107,7 @@ const ProjectPage = () => {
       <SEO title="Projects" />
 
       <div className="flex flex-col max-w-5xl p-6 mx-auto space-y-4">
-        {projects.map((project) => {
+        {sortedProjects.map((project) => {
           const image = project.thumbnailImg
             ? getImage(project.thumbnailImg)
             : undefined;
@@ -104,6 +124,14 @@ const ProjectPage = () => {
             ? frontmatter.githubLink
             : undefined;
 
+          console.log("Project", frontmatter.title);
+          console.log("Last Notion Edit", new Date(frontmatter.lastEdited));
+          console.log("Last buildTime", new Date(buildTime));
+          const lastEditedOn =
+            frontmatter.title == "Personal Site"
+              ? new Date(buildTime)
+              : new Date(frontmatter.lastEdited);
+
           return (
             <Project
               key={project.id}
@@ -113,7 +141,7 @@ const ProjectPage = () => {
               githubLink={frontmatter.githubLink}
               actionLink={frontmatter.actionLink}
               description={frontmatter.description}
-              lastEditedOn={new Date(Date.parse(frontmatter.lastEdited))}
+              lastEditedOn={lastEditedOn}
               link={link}
               status={project.childMarkdownRemark.frontmatter.status?.name}
             />

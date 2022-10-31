@@ -12,6 +12,7 @@ const IndexPage = () => {
       <div className="max-w-6xl p-4 mx-auto space-y-4">
         <div className="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2">
           <StaticImage
+            placeholder="blurred"
             alt="Rainy Hike"
             src={"../images/rain.jpeg"}
             className="w-4/5 mx-auto border-4 shadow-lg shadow-white dark:shadow-black"
@@ -63,6 +64,7 @@ const IndexPage = () => {
             </p>
           </div>
           <StaticImage
+            placeholder="blurred"
             alt="Profile Pic"
             src={"../images/profilePic.jpeg"}
             className="w-3/5 mx-auto border-4 shadow-lg shadow-white dark:shadow-black"
