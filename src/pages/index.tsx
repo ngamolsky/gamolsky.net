@@ -27,40 +27,53 @@ const IndexPage = () => {
               <br />
               <p>
                 A creative problem solver and experienced software engineer
-                looking for opportunities to apply my skills in working on
-                mitigating the effects of climate change.
+                looking for early stage climate tech opportunities making a
+                measurable impact.
               </p>
               <br />
               <p>
-                I excel in environments that require high velocity, flexibility,
-                and breadth of knowledge. My core skill is persistence.
+                I have expertise in full stack development ranging from customer
+                research, to design and implementation across the front and back
+                end.
               </p>
             </div>
           </div>
-          <div>
-            <h1 className="mt-8 text-2xl text-blue-800 uppercase dark:text-lightblue font-upper">
-              what i care about
+          <div className="text-xl">
+            <h1 className="my-8 text-2xl text-blue-800 uppercase dark:text-lightblue font-upper">
+              Top of mind
             </h1>
-            <ul className="my-4 text-xl list-disc list-inside">
-              <li>Fighting Climate Change</li>
-              <li>Improving the Quality of Education</li>
-            </ul>
-            <p className="text-xl">
-              I'm also passionate about puzzles and word games, and to that end
-              have been working on a collaborative crossword puzzle game. Head
-              over to the{" "}
-              <Link to="/projects" className="dark:text-yellow hover:underline">
-                Projects
-              </Link>{" "}
-              page to check that out and other projects I've been working on.
+            <p>
+              With considerable experience in mission-driven startups, I'm now
+              looking to transition to a founding engineering role at an early
+              stage climate tech startup.
             </p>
             <br />
-            <p className="text-xl">
-              You can also go to the{" "}
-              <Link to="/contact" className="dark:text-yellow hover:underline">
-                Contact
+            <p>
+              I'd love for the opportunity to meet founders in the space to hear
+              their stories and to see if there is potential for a partnership!
+            </p>
+            <br />
+            <p>
+              I'm also open to freelance work and consulting work, so if you
+              think a collaboration could be a good fit, please reach out on my{" "}
+              <Link
+                to="/contact"
+                className="text-blue-800 dark:text-yellow hover:underline"
+              >
+                contact page
+              </Link>
+              .
+            </p>
+            <br />
+            <p>
+              Head over to the{" "}
+              <Link
+                to="/projects"
+                className="text-blue-800 dark:text-yellow hover:underline"
+              >
+                projects
               </Link>{" "}
-              page to reach out to me directly.
+              page to check that out and other projects I've been working on.
             </p>
           </div>
           <StaticImage
