@@ -41,12 +41,14 @@ const SEO = ({
     siteUrl,
   } = site.siteMetadata;
 
-  const pathname = useLocation();
+  const location = useLocation();
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    url: `${siteUrl}${pathname}`,
+    url: `${siteUrl}${location.pathname}`,
   };
+
+  console.log(seo.url);
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
