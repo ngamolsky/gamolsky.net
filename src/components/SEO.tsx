@@ -3,6 +3,7 @@ import { useLocation } from "@reach/router";
 
 import React from "react";
 import { Helmet } from "react-helmet";
+import { getImage } from "gatsby-plugin-image";
 
 const query = graphql`
   query SEO {
@@ -12,6 +13,13 @@ const query = graphql`
         titleTemplate
         defaultDescription: description
         siteUrl: url
+      }
+    }
+    file(relativePath: { eq: "profilePic.jpeg" }) {
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
+        }
       }
     }
   }
@@ -24,7 +32,7 @@ const SEO = ({
   title?: string;
   description?: string;
 }) => {
-  const { site } = useStaticQuery(query);
+  const { site, file } = useStaticQuery(query);
   const {
     defaultTitle,
     titleTemplate,
@@ -48,6 +56,8 @@ const SEO = ({
       {seo.description && (
         <meta property="og:description" content={seo.description} />
       )}
+      <meta property="og:image" content={file.childImageSharp.fixed.src} />
+
       <meta name="twitter:card" content="summary_large_image" />
       {twitterUsername && (
         <meta name="twitter:creator" content={twitterUsername} />

@@ -7,7 +7,7 @@ import SEO from "../components/SEO";
 const IndexPage = () => {
   return (
     <Container pageNames={["about", "projects", "contact"]} currentPage="about">
-      <SEO title="About" />
+      <SEO title="About" imagePath="../images/profilePic.jpeg" />
 
       <div className="max-w-6xl p-4 mx-auto space-y-4">
         <div className="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2">
