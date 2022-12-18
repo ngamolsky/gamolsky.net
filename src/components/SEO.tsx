@@ -48,7 +48,6 @@ const SEO = ({
     url: `${siteUrl}${location.pathname}`,
   };
 
-  console.log(seo.url);
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
@@ -61,7 +60,6 @@ const SEO = ({
         <meta property="og:description" content={seo.description} />
       )}
       <meta property="og:image" content={file.childImageSharp.fixed.src} />
-
       <meta name="twitter:card" content="summary_large_image" />
       {twitterUsername && (
         <meta name="twitter:creator" content={twitterUsername} />
