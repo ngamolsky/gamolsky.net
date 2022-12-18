@@ -54,7 +54,9 @@ const SEO = ({
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
       <meta name="description" content={seo.description} />
       {seo.url && <meta property="og:url" content={seo.url} />}
-      {seo.title && <meta property="og:title" content={seo.title} />}
+      {seo.title && (
+        <meta property="og:title" content={`Nikita Gamolsky | ${seo.title}`} />
+      )}
       {seo.description && (
         <meta property="og:description" content={seo.description} />
       )}
