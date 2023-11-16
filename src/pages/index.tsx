@@ -1,87 +1,87 @@
-import { Link } from "gatsby";
 import * as React from "react";
 import Container from "../components/Container";
-import { StaticImage } from "gatsby-plugin-image";
 import SEO from "../components/SEO";
+import { useState } from "react";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { interpolateHexColors } from "../utils/colors";
+import { Home } from "../components/Home";
+import { Interests } from "../components/Interests";
+import { Contact } from "../components/Contact";
+
+const SECTIONS = {
+  home: Home,
+  interests: Interests,
+  contact: Contact,
+};
 
 const IndexPage = () => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    container: containerRef,
+  });
+
+  const [borderColor, setBorderColor] = useState("#54bfc7");
+  const [selectedSection, setSelectedSection] =
+    useState<keyof typeof SECTIONS>("home");
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (latest < 0.5) {
+      setSelectedSection("home");
+      const normalized = latest / 0.5;
+      const color = interpolateHexColors(normalized, "#54bfc7", "#f6b300");
+      setBorderColor(color);
+    } else if (latest < 1) {
+      setSelectedSection("interests");
+      const normalized = (latest - 0.5) / 0.5;
+      const color = interpolateHexColors(normalized, "#f6b300", "#b81f4e");
+      setBorderColor(color);
+    } else {
+      setSelectedSection("contact");
+      const normalized = (latest - 1) / 0.5;
+      const color = interpolateHexColors(normalized, "#b81f4e", "#54bfc7");
+      setBorderColor(color);
+    }
+  });
+
   return (
-    <Container pageNames={["about", "projects", "contact"]} currentPage="about">
-      <SEO title="About" description="Personal Website for Nikita Gamolsky." />
-
-      <div className="max-w-6xl p-4 mx-auto space-y-4">
-        <div className="grid grid-cols-1 gap-6 mt-2 md:grid-cols-2">
-          <StaticImage
-            placeholder="blurred"
-            alt="Rainy Hike"
-            src={"../images/rain.jpeg"}
-            className="w-4/5 mx-auto border-4 shadow-lg shadow-white dark:shadow-black"
-          />
-
-          <div>
-            <h1 className="text-2xl text-blue-800 uppercase dark:text-lightblue font-upper ">
-              about me
-            </h1>
-            <div className="my-4 text-xl">
-              <p>👋 Hi! I'm Nikita.</p>
-              <br />
-              <p>
-                A creative problem solver and experienced software engineer
-                looking for early stage climate tech opportunities making a
-                measurable impact.
-              </p>
-              <br />
-              <p>
-                I have expertise in full stack development ranging from customer
-                research, to design and implementation across the front and back
-                end.
-              </p>
-            </div>
-          </div>
-          <div className="text-xl">
-            <h1 className="my-8 text-2xl text-blue-800 uppercase dark:text-lightblue font-upper">
-              Top of mind
-            </h1>
-            <p>
-              With considerable experience in mission-driven startups, I'm now
-              looking to transition to a founding engineering role at an early
-              stage climate tech startup.
-            </p>
-            <br />
-            <p>
-              I'd love for the opportunity to meet founders in the space to hear
-              their stories and to see if there is potential for a partnership!
-            </p>
-            <br />
-            <p>
-              I'm also open to freelance work and consulting work, so if you
-              think a collaboration could be a good fit, please reach out on my{" "}
-              <Link
-                to="/contact"
-                className="text-blue-800 dark:text-yellow hover:underline"
+    <Container borderColor={borderColor}>
+      <SEO
+        title="welcome"
+        description="Personal Website for Nikita Gamolsky."
+      />
+      <div className="flex flex-col p-4 gap-2 h-full">
+        <div className="text-5xl">Nikita Gamolsky</div>
+        <div className="text-2xl text-gray-500">Developer</div>
+        <ul className="ml-4 text-lg">
+          {Object.keys(SECTIONS).map((section) => (
+            <li
+              key={section}
+              className={`cursor-pointer ${
+                section == selectedSection ? "list-disc" : "list-none"
+              }`}
+            >
+              <div
+                onClick={() => {
+                  const element = document.getElementById(section);
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
               >
-                contact page
-              </Link>
-              .
-            </p>
-            <br />
-            <p>
-              Head over to the{" "}
-              <Link
-                to="/projects"
-                className="text-blue-800 dark:text-yellow hover:underline"
-              >
-                projects
-              </Link>{" "}
-              page to check that out and other projects I've been working on.
-            </p>
-          </div>
-          <StaticImage
-            placeholder="blurred"
-            alt="Profile Pic"
-            src={"../images/profilePic.jpeg"}
-            className="w-3/5 mx-auto border-4 shadow-lg shadow-white dark:shadow-black"
-          />
+                {/* To title case */}
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div
+          className="h-full overflow-scroll relative scroll-smooth"
+          ref={containerRef}
+        >
+          {Object.values(SECTIONS).map((Section, index) => (
+            <Section key={index} />
+          ))}
         </div>
       </div>
     </Container>

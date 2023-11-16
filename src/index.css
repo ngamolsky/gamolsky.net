@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Lato:wght@300&family=Poiret+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300&family=Lato:wght@300&family=Poiret+One&display=swap");
 
 @layer base {
-    html, body, #root {
-      @apply h-full;
-      @apply dark:bg-slate-900;
-    }
+  html,
+  body,
+  #root {
+    @apply h-full;
+    @apply dark:bg-black;
+    @apply dark:text-white;
+  }
 }

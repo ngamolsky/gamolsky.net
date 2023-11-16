@@ -45,5 +45,18 @@ module.exports = {
         lowerTitleLevel: true,
       },
     },
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /images/,
+          options: {
+            props: {
+              className: "",
+            },
+          },
+        },
+      },
+    },
   ],
 };
