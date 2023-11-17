@@ -40,24 +40,26 @@ export const ProjectCard = ({
   };
 
   return (
-    <motion.div
+    <motion.a
       key={project.title}
-      className=" bg-stone-100 dark:bg-[#0a0a0a] h-64 relative"
+      className={`bg-stone-100 dark:bg-[#0a0a0a] w-full relative cursor-pointer`}
       variants={variants}
+      href={actionLink || githubLink || notionLink}
       initial="hidden"
       whileInView="visible"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.2, delay: index * 0.05 }}
+      title={project.description}
     >
       <div
         key={project.title}
-        className={`z-10 p-4 absolute h-full flex flex-col justify-between border-2 ${borderColor} $ `}
+        className={`z-10 p-4 h-full absolute flex flex-col justify-between border-2 ${borderColor} transition-colors duration-300`}
       >
         <div>{project.title}</div>
 
         <div className="flex flex-col grow gap-1">
           <div className="text-xs opacity-50 grow flex items-end">
-            <div className=" bg-opacity-50 bg-black p-2 text-white">
+            <div className=" bg-opacity-50 bg-black p-1 text-white">
               {project.description}
             </div>
           </div>
@@ -106,6 +108,6 @@ export const ProjectCard = ({
           className="h-full absolute aspect-square w-full opacity-10 z-0"
         />
       )}
-    </motion.div>
+    </motion.a>
   );
 };

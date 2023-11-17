@@ -53,7 +53,7 @@ export const Interests = () => {
         </p>
       </div>
       <div className="w-full my-auto h-full overflow-scroll">
-        <div className="grid grid-cols-3 gap-4 pt-4 max-w-3xl mx-auto">
+        <div className="grid grid-cols-3 gap-4 max-w-3xl mx-auto overflow-visible p-4 h-full">
           {projects.map((project, index) => {
             return (
               <ProjectCard
