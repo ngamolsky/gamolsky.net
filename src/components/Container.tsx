@@ -4,6 +4,7 @@ import LinkedInIcon from "../images/linkedin.svg";
 import { setDarkModeClassFromLocalStorageOrSetting } from "../utils/colors";
 import { motion } from "framer-motion";
 import { DarkModeCheckbox } from "./DarkmodeCheckbox";
+import { useTheme } from "../hooks/useTheme";
 
 type ContainerProps = {
   children: React.ReactNode;
@@ -11,21 +12,7 @@ type ContainerProps = {
 };
 
 const Container = ({ children, borderColor }: ContainerProps) => {
-  const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") || "dark"
-  );
-
-  const handleThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    if (value === "system") {
-      localStorage.removeItem("theme");
-    } else {
-      localStorage.setItem("theme", value);
-    }
-
-    setTheme(value);
-  };
-
+  const [theme, handleThemeChange] = useTheme();
   useEffect(() => {
     // Set Dark mode on load
     setDarkModeClassFromLocalStorageOrSetting();
@@ -62,17 +49,17 @@ const Container = ({ children, borderColor }: ContainerProps) => {
           <DarkModeCheckbox
             value="system"
             isChecked={theme === "system"}
-            onChange={handleThemeChange}
+            onChange={() => handleThemeChange("system")}
           />
           <DarkModeCheckbox
             value="light"
             isChecked={theme === "light"}
-            onChange={handleThemeChange}
+            onChange={() => handleThemeChange("light")}
           />
           <DarkModeCheckbox
             value="dark"
             isChecked={theme === "dark"}
-            onChange={handleThemeChange}
+            onChange={() => handleThemeChange("dark")}
           />
         </div>
       </div>

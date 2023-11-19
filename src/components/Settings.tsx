@@ -3,27 +3,15 @@ import { DarkModeCheckbox } from "./DarkmodeCheckbox";
 import { useState } from "react";
 import { setDarkModeClassFromLocalStorageOrSetting } from "../utils/colors";
 import { IS_MOBILE } from "../utils/settings";
+import { useTheme } from "../hooks/useTheme";
 
 export const Settings = () => {
-  const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") || "dark"
-  );
-
+  const [theme, setTheme] = useTheme();
   React.useEffect(() => {
     // Set Dark mode on load
     setDarkModeClassFromLocalStorageOrSetting();
   }, [theme]);
 
-  const handleThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    if (value === "system") {
-      localStorage.removeItem("theme");
-    } else {
-      localStorage.setItem("theme", value);
-    }
-
-    setTheme(value);
-  };
   return (
     <section
       id="settings"
@@ -36,17 +24,23 @@ export const Settings = () => {
             <DarkModeCheckbox
               value="system"
               isChecked={theme === "system"}
-              onChange={handleThemeChange}
+              onChange={() => {
+                setTheme("system");
+              }}
             />
             <DarkModeCheckbox
               value="light"
               isChecked={theme === "light"}
-              onChange={handleThemeChange}
+              onChange={() => {
+                setTheme("light");
+              }}
             />
             <DarkModeCheckbox
               value="dark"
               isChecked={theme === "dark"}
-              onChange={handleThemeChange}
+              onChange={() => {
+                setTheme("dark");
+              }}
             />
           </div>
         </div>
