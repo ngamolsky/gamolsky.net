@@ -44,3 +44,10 @@ export const TAG_TO_COLOR_MAP: {
   [Tag.Environment]: "green-500",
   [Tag.Puzzles]: "purple-500",
 };
+
+export enum BorderColor {
+  LightBlue = "#54bfc7",
+  Yellow = "#f6b300",
+  Pink = "#b81f4e",
+  Blue = "#0755b4",
+}

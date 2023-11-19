@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import GithubIcon from "../images/github.svg";
 import LinkedInIcon from "../images/linkedin.svg";
 import { setDarkModeClassFromLocalStorageOrSetting } from "../utils/colors";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
+import { DarkModeCheckbox } from "./DarkmodeCheckbox";
 
 type ContainerProps = {
   children: React.ReactNode;
@@ -11,7 +12,7 @@ type ContainerProps = {
 
 const Container = ({ children, borderColor }: ContainerProps) => {
   const [theme, setTheme] = useState<string>(
-    localStorage.getItem("theme") || "system"
+    localStorage.getItem("theme") || "dark"
   );
 
   const handleThemeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +33,7 @@ const Container = ({ children, borderColor }: ContainerProps) => {
 
   return (
     <div className="dark:bg-black bg-white dark:text-white absolute inset-0 font-upper transition-colors duration-300">
-      <div className="fixed top-4 right-10 flex gap-2">
+      <div className="fixed top-2 right-4 md:top-4 md:right-10  gap-2 hidden md:flex">
         <a href="https://github.com/ngamolsky" target="_blank">
           <GithubIcon
             className="dark:fill-white h-4 w-4 cursor-pointer"
@@ -49,14 +50,14 @@ const Container = ({ children, borderColor }: ContainerProps) => {
         </a>
       </div>
       <motion.div
-        className={`border inset-10 absolute overflow-scroll`}
+        className={`border inset-4 md:inset-10 absolute overflow-scroll`}
         style={{
           borderColor: borderColor,
         }}
       >
         {children}
       </motion.div>
-      <div className="fixed bottom-4 right-10">
+      <div className="fixed bottom-4 right-10 hidden md:block">
         <div className="flex gap-2">
           <DarkModeCheckbox
             value="system"
@@ -80,26 +81,3 @@ const Container = ({ children, borderColor }: ContainerProps) => {
 };
 
 export default Container;
-
-const DarkModeCheckbox = ({
-  value,
-  isChecked,
-  onChange,
-}: {
-  value: string;
-  isChecked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}) => {
-  return (
-    <label className="flex gap-1 cursor-pointer hover:scale-105">
-      <input
-        type="radio"
-        value={value}
-        checked={isChecked}
-        onChange={onChange}
-        className="relative appearance-none w-4 h-4 border border-gray-300 rounded-sm checked:bg-black dark:checked:bg-white checked:border-transparent focus:outline-none my-auto"
-      />
-      <span className="text-xs uppercase ">{value}</span>
-    </label>
-  );
-};

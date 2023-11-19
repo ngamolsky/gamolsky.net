@@ -139,7 +139,7 @@ const PlexMe: React.FC = () => {
                   id="passphrase"
                   name="passphrase"
                   placeholder="Enter answer"
-                  className="flex-grow p-2 dark:bg-slate-700 outline-pink"
+                  className="flex-grow p-2 dark:bg-slate-700 outline-pink h-fit my-auto"
                 />
               </div>
               <div className="mt-4 flex gap-4 w-full">
@@ -151,7 +151,7 @@ const PlexMe: React.FC = () => {
                   id="emailNotify"
                   name="emailNotify"
                   placeholder="Enter email"
-                  className="flex-grow p-2 dark:bg-slate-700 outline-pink"
+                  className="flex-grow p-2 dark:bg-slate-700 outline-pink h-fit my-auto"
                 />
               </div>
               <button

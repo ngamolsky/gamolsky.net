@@ -3,15 +3,19 @@ import Container from "../components/Container";
 import SEO from "../components/SEO";
 import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { interpolateHexColors } from "../utils/colors";
+import { BorderColor, interpolateHexColors } from "../utils/colors";
 import { Home } from "../components/Home";
 import { Interests } from "../components/Interests";
 import { Contact } from "../components/Contact";
+import { IS_MOBILE } from "../utils/settings";
+import { Settings } from "../components/Settings";
 
 const SECTIONS = {
   home: Home,
   interests: Interests,
+
   contact: Contact,
+  settings: Settings,
 };
 
 const IndexPage = () => {
@@ -26,20 +30,51 @@ const IndexPage = () => {
     useState<keyof typeof SECTIONS>("home");
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (latest < 0.5) {
+    const numSections = IS_MOBILE ? 3 : 2;
+
+    console.log(latest);
+
+    // get sections normalized to 0-1
+    if (latest < 1 / numSections) {
       setSelectedSection("home");
-      const normalized = latest / 0.5;
-      const color = interpolateHexColors(normalized, "#54bfc7", "#f6b300");
+      const normalized = latest / (1 / numSections);
+      const color = interpolateHexColors(
+        normalized,
+        BorderColor.LightBlue,
+        BorderColor.Yellow
+      );
       setBorderColor(color);
-    } else if (latest < 1) {
+    } else if (latest < 2 / numSections) {
       setSelectedSection("interests");
-      const normalized = (latest - 0.5) / 0.5;
-      const color = interpolateHexColors(normalized, "#f6b300", "#b81f4e");
+      const normalized = (latest - 1 / numSections) / (1 / numSections);
+      const color = interpolateHexColors(
+        normalized,
+        BorderColor.Yellow,
+        BorderColor.Pink
+      );
+      setBorderColor(color);
+    } else if (latest <= 3 / numSections) {
+      console.log("contact");
+
+      setSelectedSection("contact");
+      const normalized = (latest - 2 / numSections) / (1 / numSections);
+      const color = interpolateHexColors(
+        normalized,
+        BorderColor.Pink,
+        BorderColor.Blue
+      );
       setBorderColor(color);
     } else {
-      setSelectedSection("contact");
-      const normalized = (latest - 1) / 0.5;
-      const color = interpolateHexColors(normalized, "#b81f4e", "#54bfc7");
+      console.log("settings");
+
+      setSelectedSection("settings");
+      const normalized = (latest - 3 / numSections) / (1 / numSections);
+
+      const color = interpolateHexColors(
+        normalized,
+        BorderColor.Blue,
+        BorderColor.LightBlue
+      );
       setBorderColor(color);
     }
   });
@@ -50,38 +85,40 @@ const IndexPage = () => {
         title="welcome"
         description="Personal Website for Nikita Gamolsky."
       />
-      <div className="flex flex-col p-4 gap-2 h-full">
-        <div className="text-5xl">Nikita Gamolsky</div>
-        <div className="text-2xl text-gray-500">Developer</div>
-        <ul className="ml-4 text-lg">
-          {Object.keys(SECTIONS).map((section) => (
-            <li
-              key={section}
-              className={`cursor-pointer ${
-                section == selectedSection ? "list-disc" : "list-none"
-              }`}
-            >
-              <div
-                onClick={() => {
-                  const element = document.getElementById(section);
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
+      <div className="flex flex-col  gap-2 h-full">
+        <div className="text-5xl p-4">Nikita Gamolsky</div>
+        <div className="text-2xl text-gray-500 px-4">Developer</div>
+        <ul className="ml-4 text-lg px-4">
+          {Object.keys(SECTIONS).map((section) => {
+            return (
+              <li
+                key={section}
+                className={`cursor-pointer ${
+                  section == selectedSection ? "list-disc" : "list-none"
+                } ${section == "settings" ? "list-item md:hidden" : ""}`}
               >
-                {/* To title case */}
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </div>
-            </li>
-          ))}
+                <div
+                  onClick={() => {
+                    const element = document.getElementById(section);
+                    if (element) {
+                      element.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                >
+                  {/* To title case */}
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </div>
+              </li>
+            );
+          })}
         </ul>
         <div
           className="h-full overflow-scroll relative scroll-smooth"
           ref={containerRef}
         >
-          {Object.values(SECTIONS).map((Section, index) => (
-            <Section key={index} />
-          ))}
+          {Object.values(SECTIONS).map((Component, index) => {
+            return <Component key={index} />;
+          })}
         </div>
       </div>
     </Container>
