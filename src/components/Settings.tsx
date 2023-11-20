@@ -7,6 +7,7 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 export const Settings = () => {
   const [theme, setTheme] = useTheme();
   const breakpoints = useBreakpoint();
+
   React.useEffect(() => {
     // Set Dark mode on load
     setDarkModeClassFromLocalStorageOrSetting();
@@ -15,7 +16,7 @@ export const Settings = () => {
   return (
     <section
       id="settings"
-      className={`text-xl gap-4 flex h-full ${!breakpoints.xs && "hidden"}`}
+      className={`text-xl gap-4 flex h-full ${!!breakpoints.xs && "hidden"}`}
     >
       <div className="my-auto mx-auto">
         <div className="flex gap-4">

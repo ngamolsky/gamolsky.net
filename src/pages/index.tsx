@@ -31,7 +31,7 @@ const IndexPage = () => {
     useState<keyof typeof SECTIONS>("home");
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const numSections = breakpoints.xs ? 3 : 2;
+    const numSections = !breakpoints.xs ? 3 : 2;
 
     // get sections normalized to 0-1
     if (latest < 1 / numSections) {
