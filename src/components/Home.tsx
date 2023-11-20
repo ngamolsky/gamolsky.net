@@ -30,9 +30,8 @@ export const Home = () => {
           joining our team!
         </div>
       </div>
-      <div className="md:mx-auto flex items-end  order-1 md:order-2 overflow-hidden">
+      <div className="md:mx-auto flex items-end order-1 md:order-2 overflow-hidden">
         <StaticImage
-          placeholder="blurred"
           alt="Profile Pic"
           src={"../images/outline.png"}
           className={`mx-auto w-1/2`}
