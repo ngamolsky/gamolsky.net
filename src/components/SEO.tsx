@@ -5,21 +5,23 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { getImage } from "gatsby-plugin-image";
 
-const query = graphql`query SEO {
-  site {
-    siteMetadata {
-      defaultTitle: title
-      titleTemplate
-      defaultDescription: description
-      siteUrl: url
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl: url
+      }
+    }
+    file(relativePath: { eq: "profilePic.jpeg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FIXED)
+      }
     }
   }
-  file(relativePath: {eq: "profilePic.jpeg"}) {
-    childImageSharp {
-      gatsbyImageData(layout: FIXED)
-    }
-  }
-}`;
+`;
 
 const SEO = ({
   title,
@@ -44,9 +46,9 @@ const SEO = ({
     url: `${siteUrl}${location.pathname}`,
   };
 
-
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <html className="dark" />
       <meta name="description" content={seo.description} />
       {seo.url && <meta property="og:url" content={seo.url} />}
       {seo.title && (
@@ -55,7 +57,10 @@ const SEO = ({
       {seo.description && (
         <meta property="og:description" content={seo.description} />
       )}
-      <meta property="og:image" content={file.childImageSharp.gatsbyImageData.src} />
+      <meta
+        property="og:image"
+        content={file.childImageSharp.gatsbyImageData.src}
+      />
       <meta name="twitter:card" content="summary_large_image" />
       {twitterUsername && (
         <meta name="twitter:creator" content={twitterUsername} />
