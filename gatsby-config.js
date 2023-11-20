@@ -10,11 +10,15 @@ module.exports = {
     url: "https://www.gamolsky.net",
     description: "Nikita Gamolsky - personal site.",
   },
+  flags: {
+    DEV_SSR: true,
+  },
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-breakpoints",
     {
       resolve: "gatsby-plugin-manifest",
       options: {

@@ -7,8 +7,8 @@ import { BorderColor, interpolateHexColors } from "../utils/colors";
 import { Home } from "../components/Home";
 import { Interests } from "../components/Interests";
 import { Contact } from "../components/Contact";
-import { IS_MOBILE } from "../utils/settings";
 import { Settings } from "../components/Settings";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 const SECTIONS = {
   home: Home,
@@ -20,6 +20,7 @@ const SECTIONS = {
 
 const IndexPage = () => {
   const containerRef = React.useRef<HTMLDivElement>(null);
+  const breakpoints = useBreakpoint();
 
   const { scrollYProgress } = useScroll({
     container: containerRef,
@@ -30,7 +31,7 @@ const IndexPage = () => {
     useState<keyof typeof SECTIONS>("home");
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const numSections = IS_MOBILE ? 3 : 2;
+    const numSections = breakpoints.xs ? 3 : 2;
 
     // get sections normalized to 0-1
     if (latest < 1 / numSections) {

@@ -3,7 +3,7 @@ import { Project, Tag } from "../hooks/useProjects";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { motion } from "framer-motion";
 import { TAG_TO_COLOR_MAP } from "../utils/colors";
-import { IS_MOBILE } from "../utils/settings";
+import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 export const ProjectCard = ({
   project,
@@ -24,6 +24,7 @@ export const ProjectCard = ({
     description,
   } = project;
   const image = getImage(imageData);
+  const breakpoints = useBreakpoint();
 
   const tagColor = selectedTag ? TAG_TO_COLOR_MAP[selectedTag] : "";
 
@@ -45,7 +46,7 @@ export const ProjectCard = ({
 
   const variants = {
     visible: { opacity: 1 },
-    hidden: { opacity: IS_MOBILE ? 1 : 0 },
+    hidden: { opacity: breakpoints.xs ? 1 : 0 },
   };
 
   return (
@@ -92,7 +93,7 @@ export const ProjectCard = ({
 
       <motion.div
         className={`z-20 p-2 absolute flex flex-col justify-between inset-0 text-white `}
-        whileInView={selectedTag || IS_MOBILE ? "visible" : "hidden"}
+        whileInView={selectedTag || breakpoints.xs ? "visible" : "hidden"}
         whileHover={"visible"}
         variants={variants}
         initial="visible"
