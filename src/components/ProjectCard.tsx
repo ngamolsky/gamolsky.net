@@ -50,7 +50,7 @@ export const ProjectCard = ({
 
   return (
     <motion.div
-      className={`relative h-64 w-64 md:w-full md:h-full shrink-0 cursor-pointer shadow-lg ${ringColor} ${
+      className={`relative h-full aspect-square shrink-0 cursor-pointer shadow-lg ${ringColor} ${
         ringColor ? "ring-2" : ""
       } transition-all duration-300 bg-transparent`}
       variants={variants}
