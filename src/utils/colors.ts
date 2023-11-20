@@ -4,7 +4,8 @@ export const setDarkModeClassFromLocalStorageOrSetting = () => {
   if (
     localStorage.theme === "dark" ||
     (localStorage.theme == "system" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
+      window.matchMedia("(prefers-color-scheme: dark)").matches) ||
+    !localStorage.theme
   ) {
     document.documentElement.classList.add("dark");
   } else {
