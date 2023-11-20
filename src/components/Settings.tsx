@@ -1,6 +1,5 @@
 import * as React from "react";
 import { DarkModeCheckbox } from "./DarkmodeCheckbox";
-import { useState } from "react";
 import { setDarkModeClassFromLocalStorageOrSetting } from "../utils/colors";
 import { IS_MOBILE } from "../utils/settings";
 import { useTheme } from "../hooks/useTheme";

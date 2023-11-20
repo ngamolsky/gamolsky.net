@@ -3,7 +3,7 @@ import { Tag } from "../hooks/useProjects";
 export const setDarkModeClassFromLocalStorageOrSetting = () => {
   if (
     localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
+    (localStorage.theme == "system" &&
       window.matchMedia("(prefers-color-scheme: dark)").matches)
   ) {
     document.documentElement.classList.add("dark");

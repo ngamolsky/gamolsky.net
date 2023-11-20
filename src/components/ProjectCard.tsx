@@ -45,7 +45,7 @@ export const ProjectCard = ({
 
   const variants = {
     visible: { opacity: 1 },
-    hidden: { opacity: 0 },
+    hidden: { opacity: IS_MOBILE ? 1 : 0 },
   };
 
   return (
@@ -56,7 +56,6 @@ export const ProjectCard = ({
       variants={variants}
       initial="hidden"
       whileInView="visible"
-      whileHover={{}}
       transition={{ duration: 0.6, delay: index * 0.05 }}
       title={description}
       onClick={() => {
