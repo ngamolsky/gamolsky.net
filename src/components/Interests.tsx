@@ -11,7 +11,7 @@ export const Interests = () => {
       id="interests"
       className="text-xl flex h-full w-full overflow-hidden justify-center flex-col md:flex-row"
     >
-      <div className="w-5/6  flex flex-col justify-end gap-4 px-4 order-2 md:order-1 text-sm md:text-lg mb-4">
+      <div className="w-5/6 flex flex-col justify-end gap-4 px-4 order-2 md:order-1 text-sm md:text-lg mb-4">
         <p>
           I am constantly working on a lot of different projects. My main
           interests are:{" "}

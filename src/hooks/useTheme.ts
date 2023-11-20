@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 
 export const useTheme: () => [string, (newTheme: string) => void] = () => {
-  const [theme, setTheme] = useState<string>("dark");
+  const [theme, setTheme] = useState<string>("system");
 
   useEffect(() => {
-    setTheme(localStorage.getItem("theme") || "dark");
+    setTheme(localStorage.getItem("theme") || "system");
   }, []);
 
   const handleThemeChange = (newTheme: string) => {
