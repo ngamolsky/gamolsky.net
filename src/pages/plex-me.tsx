@@ -23,6 +23,7 @@ const initialValues: FormValues = {
 const PlexMe: React.FC = () => {
   const [error, setError] = React.useState<string>("");
   const [success, setSuccess] = React.useState<string>("");
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const requiredFields = ["title", "why", "who", "passphrase"];
 
@@ -36,7 +37,11 @@ const PlexMe: React.FC = () => {
       <div className="p-8 flex flex-col max-w-4xl mx-auto h-full">
         <div className="text-5xl">Plex Me Please</div>
 
-        {success ? (
+        {loading ? (
+          <div className="flex flex-col justify-center items-center h-full">
+            <div className="text-2xl">Sending Nikita's Way...</div>
+          </div>
+        ) : success ? (
           <div className="flex flex-col justify-center items-center h-full">
             <div className="text-2xl">{success}</div>
             <button
@@ -93,6 +98,7 @@ const PlexMe: React.FC = () => {
               return errors;
             }}
             onSubmit={async (values) => {
+              setLoading(true);
               const url = IS_PRODUCTION
                 ? "https://api.gamolsky.net/plex/new-request"
                 : "http://localhost:8787/plex/new-request";
@@ -107,12 +113,15 @@ const PlexMe: React.FC = () => {
                   const error = await result.text();
 
                   setError(error);
+                  setLoading(false);
                 } else {
                   setError("");
                   setSuccess("Request submitted!");
+                  setLoading(false);
                 }
               } catch (e) {
                 setError("Something went wrong, please try again later.");
+                setLoading(false);
               }
             }}
           >
