@@ -81,7 +81,7 @@ const IndexPage = () => {
         description="Personal Website for Nikita Gamolsky."
       />
       <div className="flex flex-col gap-2 h-full">
-        <div className="flex md:flex-col justify-between md:justify-start gap-2">
+        <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden">
           <div>
             <div className="text-5xl p-4">Nikita Gamolsky</div>
             <div className="text-2xl text-gray-500 px-4">Developer</div>
