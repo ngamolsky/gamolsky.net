@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import * as React from "react";
 import { useProjects, Tag } from "../hooks/useProjects";
 import { ProjectCard } from "./ProjectCard";
@@ -11,9 +9,9 @@ export const Interests = () => {
   return (
     <section
       id="interests"
-      className="text-xl grid grid-cols-1 md:grid-cols-2 h-full w-full overflow-hidden justify-center"
+      className="text-xl flex h-full w-full overflow-hidden justify-center flex-col md:flex-row"
     >
-      <div className="max-w-xl flex flex-col justify-end gap-4 px-4 order-2 md:order-1 text-lg mb-4">
+      <div className="w-5/6  flex flex-col justify-end gap-4 px-4 order-2 md:order-1 text-sm md:text-lg mb-4">
         <p>
           I am constantly working on a lot of different projects. My main
           interests are:{" "}
@@ -56,7 +54,7 @@ export const Interests = () => {
           collaborators!
         </p>
       </div>
-      <div className="flex gap-8 overflow-scroll px-4 my-auto h-full items-end ml-8 order-1  md:order-2 md:grid md:grid-cols-2 md:gap-4 md:max-w-lg md:mx-auto md:p-4 ">
+      <div className="mb-4 flex gap-8 overflow-scroll px-4 my-auto h-full items-end ml-8 order-1 md:order-2 md:grid md:grid-cols-2 md:gap-4 md:mx-auto md:p-4 lg:grid-cols-3 w-full">
         {projects.map((project, index) => {
           return (
             <ProjectCard
