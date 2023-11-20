@@ -76,7 +76,7 @@ const IndexPage = () => {
   return (
     <Container borderColor={borderColor}>
       <SEO
-        title="welcome"
+        title="Nikita Gamolsky - Developer"
         description="Personal Website for Nikita Gamolsky."
       />
       <div className="flex flex-col gap-2 h-full">
