@@ -97,18 +97,22 @@ const PlexMe: React.FC = () => {
                 ? "https://api.gamolsky.net/plex/new-request"
                 : "http://localhost:8787/plex/new-request";
 
-              const result = await fetch(url, {
-                method: "POST",
-                body: JSON.stringify(values),
-              });
+              try {
+                const result = await fetch(url, {
+                  method: "POST",
+                  body: JSON.stringify(values),
+                });
 
-              if (!result.ok) {
-                const error = await result.text();
+                if (!result.ok) {
+                  const error = await result.text();
 
-                setError(error);
-              } else {
-                setError("");
-                setSuccess("Request submitted!");
+                  setError(error);
+                } else {
+                  setError("");
+                  setSuccess("Request submitted!");
+                }
+              } catch (e) {
+                setError("Something went wrong, please try again later.");
               }
             }}
           >
