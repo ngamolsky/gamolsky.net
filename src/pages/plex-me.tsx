@@ -183,7 +183,7 @@ const PlexMe: React.FC = () => {
                 >
                   Submit
                 </button>
-                {error && <div className="text-pink">{error}</div>}
+                {error && <div className="text-pink mb-8">{error}</div>}
               </Form>
             )}
           </Formik>
