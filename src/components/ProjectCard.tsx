@@ -50,8 +50,6 @@ export const ProjectCard = ({
     hidden: { opacity: breakpoints.xs ? 1 : 0 },
   };
 
-  console.log(project);
-
   return (
     <motion.div
       className={`relative h-full aspect-square shrink-0 cursor-pointer shadow-lg ${ringColor} ${
@@ -96,9 +94,9 @@ export const ProjectCard = ({
 
       <motion.div
         className={`z-20 p-2 absolute flex flex-col justify-between inset-0 text-white `}
-        whileInView={selectedTag || !breakpoints.xs ? "visible" : "hidden"}
-        whileHover={"visible"}
         variants={variants}
+        whileInView={selectedTag || breakpoints.sm ? "visible" : "hidden"}
+        whileHover="visible"
       >
         <div className="p-2 dark:bg-black bg-white dark:text-white text-black opacity-80 w-fit">
           {title}
@@ -112,7 +110,7 @@ export const ProjectCard = ({
             <div className="flex space-x-4 text-sm">
               {notionLink && (
                 <a
-                  className="self-end text-yellow  hover:underline"
+                  className="self-end text-yellow hover:underline"
                   href={notionLink}
                   target="_blank"
                 >
@@ -121,7 +119,7 @@ export const ProjectCard = ({
               )}
               {githubLink && (
                 <a
-                  className="self-end text-yellow  hover:underline "
+                  className="self-end text-yellow hover:underline "
                   href={githubLink}
                   target="_blank"
                 >
@@ -130,7 +128,7 @@ export const ProjectCard = ({
               )}
               {actionLink && (
                 <a
-                  className="self-end text-yellow  hover:underline "
+                  className="self-end text-yellow hover:underline "
                   href={actionLink}
                   target="_blank"
                 >
