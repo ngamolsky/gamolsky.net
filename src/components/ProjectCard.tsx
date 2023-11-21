@@ -108,13 +108,7 @@ export const ProjectCard = ({
           <div className="grow" />
           <div className="dark:bg-black bg-white dark:text-white text-black p-2 opacity-80 flex flex-col gap-1">
             <div className="text-xs">{description}</div>
-            {lastEditedOn && (
-              <div className="flex text-xs text-slate-500 ">
-                <div className="self-end ">
-                  Last Updated on: {lastEditedOn.toLocaleDateString()}{" "}
-                </div>
-              </div>
-            )}
+
             <div className="flex space-x-4 text-sm">
               {notionLink && (
                 <a
