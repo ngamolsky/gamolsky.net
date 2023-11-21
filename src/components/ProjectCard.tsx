@@ -56,7 +56,6 @@ export const ProjectCard = ({
         ringColor ? "ring-2" : ""
       } transition-all duration-300 bg-transparent`}
       variants={variants}
-      initial={"hidden"}
       whileInView="visible"
       transition={{ duration: 0.6, delay: index * 0.05 }}
       title={description}
