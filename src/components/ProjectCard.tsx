@@ -106,6 +106,45 @@ export const ProjectCard = ({
 
         <div className="flex flex-col grow gap-1">
           <div className="grow" />
+          <div className="">
+            <div className="text-xs">{description}</div>
+            {lastEditedOn && (
+              <div className="flex text-xs text-slate-500 ">
+                <div className="self-end ">
+                  Last Updated on: {lastEditedOn.toLocaleDateString()}{" "}
+                </div>
+              </div>
+            )}
+            <div className="flex space-x-4 text-sm">
+              {notionLink && (
+                <a
+                  className="self-end text-yellow  hover:underline"
+                  href={notionLink}
+                  target="_blank"
+                >
+                  Notion
+                </a>
+              )}
+              {githubLink && (
+                <a
+                  className="self-end text-yellow  hover:underline "
+                  href={githubLink}
+                  target="_blank"
+                >
+                  Github
+                </a>
+              )}
+              {actionLink && (
+                <a
+                  className="self-end text-yellow  hover:underline "
+                  href={actionLink}
+                  target="_blank"
+                >
+                  Check it Out!
+                </a>
+              )}
+            </div>
+          </div>
         </div>
       </motion.div>
     </motion.div>
