@@ -92,7 +92,7 @@ export const ProjectCard = ({
         </>
       )}
 
-      <div
+      {/* <div
         className={`z-20 p-2 absolute flex flex-col justify-between inset-0 text-white `}
         // whileInView={selectedTag || !breakpoints.xs ? "visible" : "hidden"}
         // whileHover={"visible"}
@@ -144,7 +144,7 @@ export const ProjectCard = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </motion.div>
   );
 };
