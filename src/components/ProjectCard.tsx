@@ -47,7 +47,7 @@ export const ProjectCard = ({
 
   const variants = {
     visible: { opacity: 1 },
-    hidden: { opacity: breakpoints.xs ? 1 : 0 },
+    hidden: { opacity: breakpoints.sm ? 1 : 0 },
   };
 
   return (
@@ -56,7 +56,7 @@ export const ProjectCard = ({
         ringColor ? "ring-2" : ""
       } transition-all duration-300 bg-transparent`}
       variants={variants}
-      initial={breakpoints.sm ? "visible" : "hidden"}
+      initial={"hidden"}
       whileInView="visible"
       transition={{ duration: 0.6, delay: index * 0.05 }}
       title={description}
@@ -95,7 +95,7 @@ export const ProjectCard = ({
       <motion.div
         className={`z-20 p-2 absolute flex flex-col justify-between inset-0 text-white `}
         variants={variants}
-        whileInView={selectedTag || breakpoints.sm ? "visible" : "hidden"}
+        whileInView={selectedTag || "hidden"}
         whileHover="visible"
       >
         <div className="p-2 dark:bg-black bg-white dark:text-white text-black opacity-80 w-fit">
