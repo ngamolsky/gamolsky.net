@@ -12,7 +12,7 @@ import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 const SECTIONS = {
   home: Home,
-  // interests: Interests,
+  interests: Interests,
   contact: Contact,
   settings: Settings,
 };
@@ -43,7 +43,7 @@ const IndexPage = () => {
       );
       setBorderColor(color);
     } else if (latest < 2 / numSections) {
-      setSelectedSection("contact");
+      setSelectedSection("interests");
       const normalized = (latest - 1 / numSections) / (1 / numSections);
       const color = interpolateHexColors(
         normalized,
