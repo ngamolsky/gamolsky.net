@@ -92,11 +92,11 @@ export const ProjectCard = ({
         </>
       )}
 
-      {/* <div
+      <motion.div
         className={`z-20 p-2 absolute flex flex-col justify-between inset-0 text-white `}
-        // whileInView={selectedTag || !breakpoints.xs ? "visible" : "hidden"}
-        // whileHover={"visible"}
-        // variants={variants}
+        whileInView={selectedTag || !breakpoints.xs ? "visible" : "hidden"}
+        whileHover={"visible"}
+        variants={variants}
       >
         <div className="p-2 dark:bg-black bg-white dark:text-white text-black opacity-80 w-fit">
           {title}
@@ -104,8 +104,8 @@ export const ProjectCard = ({
 
         <div className="flex flex-col grow gap-1">
           <div className="grow" />
-          <div className="dark:bg-black bg-white dark:text-white text-black  p-2 opacity-80 flex flex-col gap-1">
-            <div className="   text-xs  ">{description}</div>
+          <div className="dark:bg-black bg-white dark:text-white text-black p-2 opacity-80 flex flex-col gap-1">
+            <div className="text-xs">{description}</div>
             {lastEditedOn && (
               <div className="flex text-xs text-slate-500 ">
                 <div className="self-end ">
@@ -113,7 +113,7 @@ export const ProjectCard = ({
                 </div>
               </div>
             )}
-            <div className="flex space-x-4 text-sm">
+            {/* <div className="flex space-x-4 text-sm">
               {notionLink && (
                 <a
                   className="self-end text-yellow  hover:underline"
@@ -141,10 +141,10 @@ export const ProjectCard = ({
                   Check it Out!
                 </a>
               )}
-            </div>
+            </div> */}
           </div>
         </div>
-      </div> */}
+      </motion.div>
     </motion.div>
   );
 };
