@@ -102,6 +102,7 @@ export const ProjectCard = ({
       >
         <div className="p-2 dark:bg-black bg-white dark:text-white text-black opacity-80 w-fit">
           {title}
+          {description}
         </div>
 
         <div className="flex flex-col grow gap-1">
