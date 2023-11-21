@@ -81,7 +81,14 @@ const IndexPage = () => {
       />
       <div className="flex flex-col gap-2 h-full">
         <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden">
-          <div>
+          <div
+            onClick={() => {
+              const element = document.getElementById("home");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          >
             <div className="text-5xl p-4">Nikita Gamolsky</div>
             <div className="text-2xl text-gray-500 px-4">Developer</div>
           </div>
