@@ -1,10 +1,10 @@
 import * as React from "react";
-import { useProjects, Tag } from "../hooks/useProjects";
+import { Tag, Project } from "../hooks/useProjects";
 import { ProjectCard } from "./ProjectCard";
 import { TAG_TO_COLOR_MAP } from "../utils/colors";
 
 export const Interests = () => {
-  const projects = useProjects();
+  const projects: Project[] = [];
   const [selectedTag, setSelectedTag] = React.useState<Tag>();
   return (
     <section
