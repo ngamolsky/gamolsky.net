@@ -52,11 +52,13 @@ export const ProjectCard = ({
 
   return (
     <motion.div
+      key={title}
       className={`relative h-full aspect-square shrink-0 cursor-pointer shadow-lg ${ringColor} ${
         ringColor ? "ring-2" : ""
       } transition-all duration-300 bg-transparent`}
       variants={variants}
       whileInView="visible"
+      initial="hidden"
       transition={{ duration: 0.6, delay: index * 0.05 }}
       title={description}
       onClick={() => {
@@ -72,6 +74,7 @@ export const ProjectCard = ({
       {image && (
         <>
           <motion.div
+            key={title + "-overlay"}
             className="z-10 absolute inset-0 bg-black dark:bg-black opacity-0 transition-opacity duration-300"
             animate={
               isHovered
@@ -92,6 +95,7 @@ export const ProjectCard = ({
       )}
 
       <motion.div
+        key={title + "-text"}
         className={`z-20 p-2 absolute flex flex-col justify-between inset-0 text-white `}
         variants={variants}
         whileInView={selectedTag || "hidden"}
