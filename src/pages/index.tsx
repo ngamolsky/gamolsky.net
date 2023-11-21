@@ -80,7 +80,7 @@ const IndexPage = () => {
         description="Personal Website for Nikita Gamolsky."
       />
       <div className="flex flex-col gap-2 h-full">
-        <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden">
+        <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden md:overflow-visible">
           <div
             onClick={() => {
               const element = document.getElementById("home");

@@ -54,7 +54,7 @@ export const Interests = () => {
           collaborators!
         </p>
       </div>
-      <div className="flex gap-8 overflow-scroll items-end ml-8 order-1 md:order-2 md:grid md:grid-cols-2 md:gap-4 md:mx-auto md:p-4 lg:grid-cols-3 w-full max-w-4xl mx-auto my-8 md:my-0 2xl:gap-8">
+      <div className="flex gap-8 overflow-scroll items-end p-4 order-1 md:order-2 md:grid md:grid-cols-2 md:gap-4 md:mx-auto md:p-4 lg:grid-cols-3 w-full max-w-4xl mx-auto my-8 md:my-0 2xl:gap-8">
         {projects.map((project, index) => {
           return (
             <ProjectCard
