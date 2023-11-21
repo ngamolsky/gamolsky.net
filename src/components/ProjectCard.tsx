@@ -50,6 +50,8 @@ export const ProjectCard = ({
     hidden: { opacity: breakpoints.xs ? 1 : 0 },
   };
 
+  console.log(project);
+
   return (
     <motion.div
       className={`relative h-full aspect-square shrink-0 cursor-pointer shadow-lg ${ringColor} ${
@@ -104,8 +106,8 @@ export const ProjectCard = ({
 
         <div className="flex flex-col grow gap-1">
           <div className="grow" />
-          {/* <div className="dark:bg-black bg-white dark:text-white text-black p-2 opacity-80 flex flex-col gap-1">
-            <div className="text-xs">{description}</div>
+          <div className="dark:bg-black bg-white dark:text-white text-black p-2 opacity-80 flex flex-col gap-1">
+            {/* <div className="text-xs">{description}</div>
             {lastEditedOn && (
               <div className="flex text-xs text-slate-500 ">
                 <div className="self-end ">
@@ -141,8 +143,8 @@ export const ProjectCard = ({
                   Check it Out!
                 </a>
               )}
-            </div>
-          </div> */}
+            </div> */}
+          </div>
         </div>
       </motion.div>
     </motion.div>
