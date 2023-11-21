@@ -55,7 +55,7 @@ export const ProjectCard = ({
       key={title}
       className={`relative h-full aspect-square shrink-0 cursor-pointer shadow-lg ${ringColor} ${
         ringColor ? "ring-2" : ""
-      } transition-all duration-300 bg-transparent`}
+      } `}
       variants={variants}
       whileInView="visible"
       initial="hidden"
@@ -75,7 +75,7 @@ export const ProjectCard = ({
         <>
           <motion.div
             key={title + "-overlay"}
-            className="z-10 absolute inset-0 bg-black dark:bg-black opacity-0 transition-opacity duration-300"
+            className="z-10 absolute inset-0 bg-black dark:bg-black "
             animate={
               isHovered
                 ? {
