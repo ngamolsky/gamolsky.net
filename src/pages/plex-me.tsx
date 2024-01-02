@@ -127,6 +127,7 @@ const PlexMe: React.FC = () => {
           >
             {() => (
               <Form className="flex flex-col gap-4 mt-8">
+                {error && <div className="text-pink mb-8">{error}</div>}
                 <div className="flex flex-col md:flex-row gap-4 w-full">
                   <label htmlFor="title" className="my-auto w-60">
                     What should I add?{" "}
@@ -192,7 +193,6 @@ const PlexMe: React.FC = () => {
                 >
                   Submit
                 </button>
-                {error && <div className="text-pink mb-8">{error}</div>}
               </Form>
             )}
           </Formik>

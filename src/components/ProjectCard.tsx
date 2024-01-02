@@ -42,9 +42,7 @@ export const ProjectCard = ({
     ringColor = "ring-green-500";
   } else if (tagColor === "purple-500") {
     ringColor = "ring-purple-500";
-  } else {
   }
-
   const variants = {
     visible: { opacity: 1 },
     hidden: { opacity: breakpoints.sm ? 1 : 0 },
