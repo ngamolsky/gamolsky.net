@@ -4,10 +4,12 @@ export const SEO = ({
   title,
   description,
   image,
+  path,
 }: {
   title?: string;
   description?: string;
   image?: string;
+  path?: string;
 }) => {
   const {
     title: defaultTitle,
@@ -16,11 +18,13 @@ export const SEO = ({
     siteUrl,
   } = useSiteMetadata();
 
+  const url = path ? `${siteUrl}/${path}` : siteUrl;
+
   const seo = {
     title: title || defaultTitle || "",
     description: description || defaultDescription || "",
     image: `${siteUrl}/${image || defaultImage}`,
-    url: siteUrl || "",
+    url: url || "",
   };
 
   return (

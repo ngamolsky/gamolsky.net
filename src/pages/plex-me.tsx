@@ -203,5 +203,7 @@ export const Head = () => (
   <SEO
     title="Nikita Gamolsky | Plex Me"
     description="Site for friends to submit plex requests!"
+    path="plex-me"
+    image="plexMe.webp"
   />
 );
