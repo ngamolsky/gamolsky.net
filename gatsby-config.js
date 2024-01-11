@@ -9,10 +9,12 @@ module.exports = {
     siteUrl: `https://www.gamolsky.net`,
     url: "https://www.gamolsky.net",
     description: "Nikita Gamolsky - personal site.",
+    image: "/images/profilePic.jpeg",
   },
   flags: {
     DEV_SSR: true,
   },
+  graphqlTypegen: true,
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",

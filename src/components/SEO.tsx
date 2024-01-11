@@ -3,30 +3,27 @@ import { useSiteMetadata } from "../hooks/useSiteMetadata";
 export const SEO = ({
   title,
   description,
-  pathname,
   children,
+  image,
 }: {
   title: string;
   description: string;
-  pathname?: string;
   children: React.ReactNode;
+  image?: string;
 }) => {
   const {
     title: defaultTitle,
     description: defaultDescription,
-    image,
     siteUrl,
-    twitterUsername,
+    image: defaultImage,
   } = useSiteMetadata();
 
   const seo = {
-    title: title || defaultTitle,
-    description: description || defaultDescription,
-    image: `${siteUrl}${image}`,
-    url: `${siteUrl}${pathname || ``}`,
-    twitterUsername,
+    title: title || defaultTitle || "",
+    description: description || defaultDescription || "",
+    image: `${siteUrl}${image}` || `${siteUrl}${defaultImage}` || "",
+    url: `${siteUrl}`,
   };
-
   return (
     <>
       <title>{seo.title}</title>
@@ -37,7 +34,6 @@ export const SEO = ({
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
-      <meta name="twitter:creator" content={seo.twitterUsername} />
       <link
         rel="icon"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👤</text></svg>"
