@@ -75,61 +75,63 @@ const IndexPage = () => {
 
   return (
     <Container borderColor={borderColor}>
-      <SEO
-        title="Nikita Gamolsky - Developer"
-        description="Personal Website for Nikita Gamolsky."
-      >
-        <div className="flex flex-col gap-2 h-full">
-          <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden md:overflow-visible">
-            <div
-              onClick={() => {
-                const element = document.getElementById("home");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth" });
-                }
-              }}
-            >
-              <div className="text-5xl p-4">Nikita Gamolsky</div>
-              <div className="text-2xl text-gray-500 px-4">Developer</div>
-            </div>
-            <ul className="md:ml-4 text-lg px-4 self-end md:self-auto">
-              {Object.keys(SECTIONS).map((section) => {
-                return (
-                  <li
-                    key={section}
-                    className={`cursor-pointer ${
-                      section == selectedSection ? "list-disc" : "list-none"
-                    } ${section == "settings" ? "list-item md:hidden" : ""}`}
-                  >
-                    <div
-                      onClick={() => {
-                        const element = document.getElementById(section);
-                        if (element) {
-                          element.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }}
-                    >
-                      {/* To title case */}
-                      {section.charAt(0).toUpperCase() + section.slice(1)}
-                    </div>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
+      <div className="flex flex-col gap-2 h-full">
+        <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden md:overflow-visible">
           <div
-            className="h-full overflow-scroll relative scroll-smooth"
-            ref={containerRef}
+            onClick={() => {
+              const element = document.getElementById("home");
+              if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
-            {Object.values(SECTIONS).map((Component, index) => {
-              return <Component key={index} />;
-            })}
+            <div className="text-5xl p-4">Nikita Gamolsky</div>
+            <div className="text-2xl text-gray-500 px-4">Developer</div>
           </div>
+          <ul className="md:ml-4 text-lg px-4 self-end md:self-auto">
+            {Object.keys(SECTIONS).map((section) => {
+              return (
+                <li
+                  key={section}
+                  className={`cursor-pointer ${
+                    section == selectedSection ? "list-disc" : "list-none"
+                  } ${section == "settings" ? "list-item md:hidden" : ""}`}
+                >
+                  <div
+                    onClick={() => {
+                      const element = document.getElementById(section);
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth" });
+                      }
+                    }}
+                  >
+                    {/* To title case */}
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
-      </SEO>
+
+        <div
+          className="h-full overflow-scroll relative scroll-smooth"
+          ref={containerRef}
+        >
+          {Object.values(SECTIONS).map((Component, index) => {
+            return <Component key={index} />;
+          })}
+        </div>
+      </div>
     </Container>
   );
 };
 
 export default IndexPage;
+
+export const Head = () => (
+  <SEO
+    title="Nikita Gamolsky - Developer"
+    description="Personal Website for Nikita Gamolsky."
+  />
+);

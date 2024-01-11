@@ -5,11 +5,9 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `gamolsky.net`,
-    titleTemplate: "%s | Nikita Gamolsky",
-    siteUrl: `https://www.gamolsky.net`,
-    url: "https://www.gamolsky.net",
+    siteUrl: `https://gamolsky.net`,
     description: "Nikita Gamolsky - personal site.",
-    image: "/images/profilePic.jpeg",
+    image: "/profilePic.jpeg",
   },
   flags: {
     DEV_SSR: true,
