@@ -5,8 +5,8 @@ export const SEO = ({
   description,
   image,
 }: {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   image?: string;
 }) => {
   const {
@@ -19,9 +19,12 @@ export const SEO = ({
   const seo = {
     title: title || defaultTitle || "",
     description: description || defaultDescription || "",
-    image: `${siteUrl}${image}` || `${siteUrl}${defaultImage}` || "",
-    url: `${siteUrl}`,
+    image: `${siteUrl}${image || defaultImage}`,
+    url: siteUrl || "",
   };
+
+  console.log(siteUrl, defaultImage);
+
   return (
     <>
       <title>{seo.title}</title>
@@ -32,10 +35,6 @@ export const SEO = ({
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
-      <link
-        rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👤</text></svg>"
-      />
     </>
   );
 };
