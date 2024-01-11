@@ -199,9 +199,9 @@ const PlexMe: React.FC = () => {
 
 export default PlexMe;
 
-// export const Head = () => (
-//   <SEO
-//     title="Plex Me"
-//     description="Site for friends to submit plex requests!"
-//   />
-// );
+export const Head = () => (
+  <SEO
+    title="Nikita Gamolsky | Plex Me"
+    description="Site for friends to submit plex requests!"
+  />
+);
