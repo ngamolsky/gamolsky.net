@@ -12,18 +12,16 @@ export const SEO = ({
   const {
     title: defaultTitle,
     description: defaultDescription,
-    siteUrl,
     image: defaultImage,
+    siteUrl,
   } = useSiteMetadata();
 
   const seo = {
     title: title || defaultTitle || "",
     description: description || defaultDescription || "",
-    image: `${siteUrl}${image || defaultImage}`,
+    image: `${siteUrl}/${image || defaultImage}`,
     url: siteUrl || "",
   };
-
-  console.log(siteUrl, defaultImage);
 
   return (
     <>
@@ -35,6 +33,11 @@ export const SEO = ({
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
+      <meta property="og:title" content={seo.title} />
+      <meta property="og:url" content={seo.url} />
+      <meta property="og:type" content="website" />
+      <meta property="og:description" content={seo.description} />
+      <meta property="og:image" content={seo.image} />
     </>
   );
 };
