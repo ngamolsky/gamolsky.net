@@ -1,76 +1,48 @@
-import { graphql, useStaticQuery } from "gatsby";
-import { useLocation } from "@reach/router";
-
 import React from "react";
-import { Helmet } from "react-helmet";
-import { getImage } from "gatsby-plugin-image";
-
-const query = graphql`
-  query SEO {
-    site {
-      siteMetadata {
-        defaultTitle: title
-        titleTemplate
-        defaultDescription: description
-        siteUrl: url
-      }
-    }
-    file(relativePath: { eq: "profilePic.jpeg" }) {
-      childImageSharp {
-        gatsbyImageData(layout: FIXED)
-      }
-    }
-  }
-`;
-
-const SEO = ({
+import { useSiteMetadata } from "../hooks/useSiteMetadata";
+export const SEO = ({
   title,
   description,
+  pathname,
+  children,
 }: {
-  title?: string;
-  description?: string;
+  title: string;
+  description: string;
+  pathname?: string;
+  children: React.ReactNode;
 }) => {
-  const { site, file } = useStaticQuery(query);
   const {
-    defaultTitle,
-    titleTemplate,
-    defaultDescription,
-    twitterUsername,
+    title: defaultTitle,
+    description: defaultDescription,
+    image,
     siteUrl,
-  } = site.siteMetadata;
+    twitterUsername,
+  } = useSiteMetadata();
 
-  const location = useLocation();
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    url: `${siteUrl}${location.pathname}`,
+    image: `${siteUrl}${image}`,
+    url: `${siteUrl}${pathname || ``}`,
+    twitterUsername,
   };
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
-      <html className="dark" />
+    <>
+      <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
-      {seo.url && <meta property="og:url" content={seo.url} />}
-      {seo.title && (
-        <meta property="og:title" content={`Nikita Gamolsky | ${seo.title}`} />
-      )}
-      {seo.description && (
-        <meta property="og:description" content={seo.description} />
-      )}
-      <meta
-        property="og:image"
-        content={file.childImageSharp.gatsbyImageData.src}
-      />
+      <meta name="image" content={seo.image} />
       <meta name="twitter:card" content="summary_large_image" />
-      {twitterUsername && (
-        <meta name="twitter:creator" content={twitterUsername} />
-      )}
-      {seo.title && <meta name="twitter:title" content={seo.title} />}
-      {seo.description && (
-        <meta name="twitter:description" content={seo.description} />
-      )}
-    </Helmet>
+      <meta name="twitter:title" content={seo.title} />
+      <meta name="twitter:url" content={seo.url} />
+      <meta name="twitter:description" content={seo.description} />
+      <meta name="twitter:image" content={seo.image} />
+      <meta name="twitter:creator" content={seo.twitterUsername} />
+      <link
+        rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>👤</text></svg>"
+      />
+      {children}
+    </>
   );
 };
-
-export default SEO;

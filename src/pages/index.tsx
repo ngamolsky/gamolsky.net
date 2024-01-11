@@ -1,6 +1,5 @@
 import * as React from "react";
 import Container from "../components/Container";
-import SEO from "../components/SEO";
 import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { BorderColor, interpolateHexColors } from "../utils/colors";
@@ -9,6 +8,7 @@ import { Interests } from "../components/Interests";
 import { Contact } from "../components/Contact";
 import { Settings } from "../components/Settings";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
+import { SEO } from "../components/SEO";
 
 const SECTIONS = {
   home: Home,
@@ -78,55 +78,56 @@ const IndexPage = () => {
       <SEO
         title="Nikita Gamolsky - Developer"
         description="Personal Website for Nikita Gamolsky."
-      />
-      <div className="flex flex-col gap-2 h-full">
-        <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden md:overflow-visible">
-          <div
-            onClick={() => {
-              const element = document.getElementById("home");
-              if (element) {
-                element.scrollIntoView({ behavior: "smooth" });
-              }
-            }}
-          >
-            <div className="text-5xl p-4">Nikita Gamolsky</div>
-            <div className="text-2xl text-gray-500 px-4">Developer</div>
-          </div>
-          <ul className="md:ml-4 text-lg px-4 self-end md:self-auto">
-            {Object.keys(SECTIONS).map((section) => {
-              return (
-                <li
-                  key={section}
-                  className={`cursor-pointer ${
-                    section == selectedSection ? "list-disc" : "list-none"
-                  } ${section == "settings" ? "list-item md:hidden" : ""}`}
-                >
-                  <div
-                    onClick={() => {
-                      const element = document.getElementById(section);
-                      if (element) {
-                        element.scrollIntoView({ behavior: "smooth" });
-                      }
-                    }}
+      >
+        <div className="flex flex-col gap-2 h-full">
+          <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden md:overflow-visible">
+            <div
+              onClick={() => {
+                const element = document.getElementById("home");
+                if (element) {
+                  element.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
+              <div className="text-5xl p-4">Nikita Gamolsky</div>
+              <div className="text-2xl text-gray-500 px-4">Developer</div>
+            </div>
+            <ul className="md:ml-4 text-lg px-4 self-end md:self-auto">
+              {Object.keys(SECTIONS).map((section) => {
+                return (
+                  <li
+                    key={section}
+                    className={`cursor-pointer ${
+                      section == selectedSection ? "list-disc" : "list-none"
+                    } ${section == "settings" ? "list-item md:hidden" : ""}`}
                   >
-                    {/* To title case */}
-                    {section.charAt(0).toUpperCase() + section.slice(1)}
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+                    <div
+                      onClick={() => {
+                        const element = document.getElementById(section);
+                        if (element) {
+                          element.scrollIntoView({ behavior: "smooth" });
+                        }
+                      }}
+                    >
+                      {/* To title case */}
+                      {section.charAt(0).toUpperCase() + section.slice(1)}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
 
-        <div
-          className="h-full overflow-scroll relative scroll-smooth"
-          ref={containerRef}
-        >
-          {Object.values(SECTIONS).map((Component, index) => {
-            return <Component key={index} />;
-          })}
+          <div
+            className="h-full overflow-scroll relative scroll-smooth"
+            ref={containerRef}
+          >
+            {Object.values(SECTIONS).map((Component, index) => {
+              return <Component key={index} />;
+            })}
+          </div>
         </div>
-      </div>
+      </SEO>
     </Container>
   );
 };
