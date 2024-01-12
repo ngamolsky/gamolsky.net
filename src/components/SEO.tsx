@@ -5,11 +5,13 @@ export const SEO = ({
   description,
   image,
   path,
+  children,
 }: {
   title?: string;
   description?: string;
   image?: string;
   path?: string;
+  children?: React.ReactNode;
 }) => {
   const {
     title: defaultTitle,
@@ -42,6 +44,7 @@ export const SEO = ({
       <meta property="og:type" content="website" />
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
+      {children}
     </>
   );
 };

@@ -259,5 +259,7 @@ export const Head = () => (
     description="Site for friends to submit plex requests!"
     path="plex-me"
     image="plexMe.webp"
-  />
+  >
+    <meta name="robots" content="noindex, nofollow" />
+  </SEO>
 );
