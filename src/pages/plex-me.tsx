@@ -10,6 +10,7 @@ interface FormValues {
   who: string;
   passphrase: string;
   emailNotify: string;
+  fastSubmit: boolean;
 }
 
 const initialValues: FormValues = {
@@ -18,12 +19,40 @@ const initialValues: FormValues = {
   who: "",
   passphrase: "",
   emailNotify: "",
+  fastSubmit: false,
 };
 
 const PlexMe: React.FC = () => {
   const [error, setError] = React.useState<string>("");
   const [success, setSuccess] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
+
+  const addNewRequest = async (values: FormValues) => {
+    const url = IS_PRODUCTION
+      ? "https://api.gamolsky.net/plex/new-request"
+      : "http://localhost:8787/plex/new-request";
+
+    try {
+      const result = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+
+      if (!result.ok) {
+        const error = await result.text();
+
+        setError(error);
+        setLoading(false);
+      } else {
+        setError("");
+        setSuccess("Request submitted!");
+        setLoading(false);
+      }
+    } catch (e) {
+      setError("Something went wrong, please try again later.");
+      setLoading(false);
+    }
+  };
 
   const requiredFields = ["title", "why", "who", "passphrase"];
 
@@ -93,6 +122,13 @@ const PlexMe: React.FC = () => {
               return errors;
             }}
             onSubmit={async (values) => {
+              if (values.fastSubmit) {
+                window.open(
+                  "https://www.paypal.com/donate/?hosted_button_id=JRDEC53W2SXA8",
+                  "_blank"
+                );
+              }
+
               setLoading(true);
               const url = IS_PRODUCTION
                 ? "https://api.gamolsky.net/plex/new-request"
@@ -120,7 +156,7 @@ const PlexMe: React.FC = () => {
               }
             }}
           >
-            {() => (
+            {({ setFieldValue }) => (
               <Form className="flex flex-col gap-4 mt-8">
                 {error && <div className="text-pink mb-8">{error}</div>}
                 <div className="flex flex-col md:flex-row gap-4 w-full">
@@ -182,12 +218,30 @@ const PlexMe: React.FC = () => {
                     className="flex-grow p-2 dark:bg-slate-700 outline-pink h-fit my-auto"
                   />
                 </div>
-                <button
-                  type="submit"
-                  className="bg-pink w-full mx-auto p-2 dark:hover:bg-rose-800 my-4 md:mt-8"
-                >
-                  Submit
-                </button>
+                <div>
+                  <button
+                    type="submit"
+                    name="fastSubmit"
+                    value="false"
+                    className="bg-pink w-full mx-auto p-2 dark:hover:bg-rose-800 my-4 md:mt-8"
+                    onClick={() => {
+                      setFieldValue("fastSubmit", false);
+                    }}
+                  >
+                    Submit
+                  </button>
+                  <button
+                    type="submit"
+                    name="fastSubmit"
+                    value="true"
+                    className="bg-pink w-full mx-auto p-2 dark:hover:bg-rose-800 my-4 "
+                    onClick={() => {
+                      setFieldValue("fastSubmit", true);
+                    }}
+                  >
+                    Submit Faster
+                  </button>
+                </div>
               </Form>
             )}
           </Formik>
