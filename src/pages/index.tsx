@@ -130,8 +130,5 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const Head = () => (
-  <SEO
-    title="Nikita Gamolsky - Developer"
-    description="Personal Website for Nikita Gamolsky."
-  />
+  <SEO title="Home" description="Personal Website for Nikita Gamolsky." />
 );

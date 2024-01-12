@@ -4,7 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Nikita Gamolsky`,
+    titleTemplate: "%s | Nikita Gamolsky",
     siteUrl: `https://gamolsky.net`,
     description: "Nikita Gamolsky - personal site.",
     image: "profilePic.jpeg",
