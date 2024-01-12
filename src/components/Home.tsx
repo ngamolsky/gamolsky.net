@@ -30,12 +30,13 @@ export const Home = () => {
           joining our team!
         </div>
       </div>
-      <div className="md:mx-auto flex items-end order-1 md:order-2 overflow-hidden">
+      <div className="md:mx-auto flex items-end order-1 md:order-2 overflow-hidden h-full">
         <StaticImage
           placeholder="blurred"
           alt="Profile Pic"
           src={"../images/outline.png"}
-          className={`mx-auto w-1/2`}
+          className={`mx-auto w-auto max-w-1/2 h-full `}
+          objectFit="scale-down"
         />
       </div>
     </section>

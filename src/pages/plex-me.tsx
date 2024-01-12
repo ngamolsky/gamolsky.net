@@ -255,7 +255,7 @@ export default PlexMe;
 
 export const Head = () => (
   <SEO
-    title="Plex Me"
+    title="Plex Me | Nikita Gamolsky"
     description="Site for friends to submit plex requests!"
     path="plex-me"
     image="plexMe.webp"
