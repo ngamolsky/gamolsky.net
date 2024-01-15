@@ -25,9 +25,7 @@ export const Home = () => {
             target="_blank"
           >
             gender health gap.
-          </a>{" "}
-          We are actively hiring so please reach out if you are interested in
-          joining our team!
+          </a>
         </div>
       </div>
       <div className="md:mx-auto order-1 md:order-2 overflow-hidden h-full items-end flex">

@@ -27,6 +27,8 @@ export const ProjectCard = ({
   const image = getImage(imageData);
   const breakpoints = useBreakpoint();
 
+  console.log(breakpoints);
+
   const tagColor = selectedTag ? TAG_TO_COLOR_MAP[selectedTag] : "";
 
   const [isHovered, setIsHovered] = React.useState<boolean>(false);
@@ -106,9 +108,9 @@ export const ProjectCard = ({
         <div className="flex flex-col grow gap-1">
           <div className="grow" />
           <div className="dark:bg-black bg-white dark:text-white text-black p-2 opacity-80 flex flex-col gap-1">
-            <div className="text-xs md:text-xl">{description}</div>
+            <div className="text-xs ">{description}</div>
 
-            <div className="flex space-x-4 text-sm  md:text-xl">
+            <div className="flex space-x-4 text-sm  ">
               {notionLink && (
                 <a
                   className="self-end text-yellow hover:underline"

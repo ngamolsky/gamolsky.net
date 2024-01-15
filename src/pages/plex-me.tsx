@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Formik, Form, Field } from "formik";
 import Container from "../components/Container";
 import { IS_PRODUCTION } from "../utils/settings";
 import { SEO } from "../components/SEO";
+import { Dialog, Transition } from "@headlessui/react";
 
 interface FormValues {
   title: string;
@@ -131,7 +132,15 @@ const PlexMe: React.FC = () => {
           >
             {({ setFieldValue }) => (
               <Form className="flex flex-col gap-4 mt-8">
-                {error && <div className="text-pink mb-8">{error}</div>}
+                {error && (
+                  <ErrorDialog
+                    isOpen={!!error}
+                    close={() => {
+                      setError("");
+                    }}
+                    error={error}
+                  />
+                )}
                 <div className="flex flex-col md:flex-row gap-4 w-full">
                   <label htmlFor="title" className="my-auto w-60">
                     What should I add?{" "}
@@ -196,7 +205,7 @@ const PlexMe: React.FC = () => {
                     type="submit"
                     name="fastSubmit"
                     value="false"
-                    className="bg-pink w-full mx-auto p-2 dark:hover:bg-rose-800 my-4 md:mt-8"
+                    className="bg-pink w-full mx-auto p-2 dark:hover:bg-rose-800 mt-4 md:mt-8"
                     onClick={() => {
                       setFieldValue("fastSubmit", false);
                     }}
@@ -235,4 +244,66 @@ export const Head = () => (
   >
     <meta name="robots" content="noindex, nofollow" />
   </SEO>
+);
+
+const ErrorDialog = ({
+  isOpen,
+  close,
+  error,
+}: {
+  isOpen: boolean;
+  close: () => void;
+  error: string;
+}) => (
+  <Transition appear show={isOpen} as={Fragment}>
+    <Dialog as="div" className="relative z-10" onClose={close}>
+      <Transition.Child
+        as={Fragment}
+        enter="ease-out duration-300"
+        enterFrom="opacity-0"
+        enterTo="opacity-100"
+        leave="ease-in duration-200"
+        leaveFrom="opacity-100"
+        leaveTo="opacity-0"
+      >
+        <div className="fixed inset-0 bg-black/25" />
+      </Transition.Child>
+
+      <div className="fixed inset-0 overflow-y-auto">
+        <div className="flex min-h-full items-center justify-center p-4 text-center">
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Title
+                as="h3"
+                className="text-lg font-medium leading-6 text-gray-900"
+              >
+                Error
+              </Dialog.Title>
+              <div className="mt-2">
+                <p className="text-sm text-gray-500">{error}</p>
+              </div>
+
+              <div className="mt-4">
+                <button
+                  type="button"
+                  className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                  onClick={close}
+                >
+                  Close
+                </button>
+              </div>
+            </Dialog.Panel>
+          </Transition.Child>
+        </div>
+      </div>
+    </Dialog>
+  </Transition>
 );
