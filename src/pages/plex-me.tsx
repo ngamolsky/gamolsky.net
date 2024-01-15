@@ -27,39 +27,12 @@ const PlexMe: React.FC = () => {
   const [success, setSuccess] = React.useState<string>("");
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  const addNewRequest = async (values: FormValues) => {
-    const url = IS_PRODUCTION
-      ? "https://api.gamolsky.net/plex/new-request"
-      : "http://localhost:8787/plex/new-request";
-
-    try {
-      const result = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify(values),
-      });
-
-      if (!result.ok) {
-        const error = await result.text();
-
-        setError(error);
-        setLoading(false);
-      } else {
-        setError("");
-        setSuccess("Request submitted!");
-        setLoading(false);
-      }
-    } catch (e) {
-      setError("Something went wrong, please try again later.");
-      setLoading(false);
-    }
-  };
-
   const requiredFields = ["title", "why", "who", "passphrase"];
 
   return (
     <Container borderColor={"#b81f4e"}>
       <div className="p-8 flex flex-col max-w-4xl mx-auto h-full">
-        <div className="text-5xl">Plex Me Please</div>
+        <div className="text-4xl">Plex Me Please</div>
 
         {loading ? (
           <div className="flex flex-col justify-center items-center h-full">

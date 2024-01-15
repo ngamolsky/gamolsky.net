@@ -10,9 +10,9 @@ export const Interests = () => {
   return (
     <section
       id="interests"
-      className="text-xl flex h-full w-full overflow-hidden justify-center flex-col md:flex-row p-4 md:items-end"
+      className="text-xl flex h-full w-full overflow-hidden justify-center flex-col xl:flex-row p-4 xl:items-end md:justify-end"
     >
-      <div className="w-5/6 flex flex-col justify-end gap-4 order-2 md:order-1 text-sm md:text-lg max-w-5xl">
+      <div className="w-5/6 flex flex-col justify-end gap-4 order-2 xl:order-1 text-md md:text-2xl max-w-5xl">
         <p>
           I am constantly working on a lot of different projects. My main
           interests are:{" "}
@@ -55,7 +55,7 @@ export const Interests = () => {
           collaborators!
         </p>
       </div>
-      <div className="flex gap-8 overflow-scroll items-end p-4 order-1 md:order-2 md:grid md:grid-cols-2 md:gap-4 md:mx-auto md:p-4 lg:grid-cols-3 w-full max-w-4xl mx-auto my-8 md:my-0 2xl:gap-8">
+      <div className="my-16 md:my-32 xl:mt-0 flex gap-8 overflow-scroll items-end p-4 order-1 xl:order-2 xl:grid xl:p-4 xl:grid-cols-3 w-full xl:max-w-3xl mx-auto xl:my-0 2xl:gap-8">
         {projects.map((project, index) => {
           return (
             <ProjectCard

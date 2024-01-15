@@ -30,7 +30,7 @@ const IndexPage = () => {
     useState<keyof typeof SECTIONS>("home");
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    const numSections = !breakpoints.xs ? 3 : 2;
+    const numSections = breakpoints.sm ? 3 : 2;
 
     // get sections normalized to 0-1
     if (latest < 1 / numSections) {
@@ -76,7 +76,7 @@ const IndexPage = () => {
   return (
     <Container borderColor={borderColor}>
       <div className="flex flex-col gap-2 h-full">
-        <div className="flex md:flex-col justify-between md:justify-start gap-2 overflow-hidden md:overflow-visible">
+        <div className="flex md:flex-col justify-between md:justify-start gap-2 ">
           <div
             onClick={() => {
               const element = document.getElementById("home");
@@ -85,10 +85,10 @@ const IndexPage = () => {
               }
             }}
           >
-            <div className="text-5xl p-4">Nikita Gamolsky</div>
+            <div className="text-3xl md:text-5xl p-4">Nikita Gamolsky</div>
             <div className="text-2xl text-gray-500 px-4">Developer</div>
           </div>
-          <ul className="md:ml-4 text-lg px-4 self-end md:self-auto">
+          <ul className="md:ml-4 text-lg px-4 mt-2 md:self-auto overflow-visible">
             {Object.keys(SECTIONS).map((section) => {
               return (
                 <li
