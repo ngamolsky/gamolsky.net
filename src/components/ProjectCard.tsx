@@ -27,8 +27,6 @@ export const ProjectCard = ({
   const image = getImage(imageData);
   const breakpoints = useBreakpoint();
 
-  console.log(breakpoints);
-
   const tagColor = selectedTag ? TAG_TO_COLOR_MAP[selectedTag] : "";
 
   const [isHovered, setIsHovered] = React.useState<boolean>(false);

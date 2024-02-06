@@ -12,7 +12,7 @@ export const Interests = () => {
       id="interests"
       className="text-xl flex h-full w-full overflow-hidden justify-center flex-col xl:flex-row p-4 xl:items-end md:justify-end"
     >
-      <div className="w-5/6 flex flex-col justify-end gap-4 order-2 xl:order-1 text-md md:text-lg max-w-5xl">
+      <div className="w-full xl:w-5/6 flex flex-col justify-end gap-4 order-2 xl:order-1 text-md md:text-lg max-w-5xl">
         <p>
           I am constantly working on a lot of different projects. My main
           interests are:{" "}
@@ -55,7 +55,7 @@ export const Interests = () => {
           collaborators!
         </p>
       </div>
-      <div className="my-16 xl:mt-0 flex gap-8 overflow-scroll items-end p-4 order-1 xl:order-2 xl:grid xl:p-4 xl:grid-cols-3 w-full xl:max-w-3xl mx-auto xl:my-0 2xl:gap-8">
+      <div className="max-h-80 xl:max-h-none my-auto xl:mt-0 flex gap-8 overflow-scroll items-end p-4 order-1 xl:order-2 xl:grid xl:p-4 xl:grid-cols-3 w-full xl:max-w-3xl mx-auto xl:my-0 2xl:gap-8">
         {projects.map((project, index) => {
           return (
             <ProjectCard

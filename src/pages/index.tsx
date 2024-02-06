@@ -2,7 +2,11 @@ import * as React from "react";
 import Container from "../components/Container";
 import { useState } from "react";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { BorderColor, interpolateHexColors } from "../utils/colors";
+import {
+  BorderColor,
+  interpolateHexColors,
+  setDarkModeClassFromLocalStorageOrSetting,
+} from "../utils/colors";
 import { Home } from "../components/Home";
 import { Interests } from "../components/Interests";
 import { Contact } from "../components/Contact";
@@ -130,8 +134,11 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const Head = () => (
-  <SEO
-    title="Home | Nikita Gamolsky"
-    description="Personal Website for Nikita Gamolsky."
-  />
+  <>
+    <html className="dark" />
+    <SEO
+      title="Home | Nikita Gamolsky"
+      description="Personal Website for Nikita Gamolsky."
+    />
+  </>
 );
