@@ -1,11 +1,16 @@
 import * as React from "react";
 import { DarkModeCheckbox } from "./DarkmodeCheckbox";
+import { setDarkModeClassFromLocalStorageOrSetting } from "../utils/colors";
 import { useTheme } from "../hooks/useTheme";
 import { useBreakpoint } from "gatsby-plugin-breakpoints";
 
 export const Settings = () => {
   const [theme, setTheme] = useTheme();
   const breakpoints = useBreakpoint();
+
+  React.useEffect(() => {
+    setDarkModeClassFromLocalStorageOrSetting();
+  }, [theme]);
 
   return (
     <section
