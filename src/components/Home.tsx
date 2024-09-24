@@ -14,17 +14,14 @@ export const Home = () => {
           and impactful work.
         </div>
         <div>
-          I currently am working on a two person engineering team at{" "}
-          <a href="https://www.evvy.com/" className="underline" target="_blank">
-            Evvy
-          </a>
-          , where we are on a mission to close the{" "}
+          I am currently working on some Dev tools that align genAI to human
+          objectives. See more at{" "}
           <a
-            href="https://equalresearchday.com/"
-            className="underline"
+            href="https://aymara.ai/"
+            className="underline hover:text-lightblue"
             target="_blank"
           >
-            gender health gap.
+            aymara.ai.
           </a>
         </div>
       </div>
